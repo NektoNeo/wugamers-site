@@ -17,8 +17,8 @@ import {
 
 const menuItems = [
   { text: "Главная", href: "#hero" },
-  { text: "О нас", href: "#about" },
   { text: "Мероприятия", href: "#events" },
+  { text: "О нас", href: "#about" },
   { text: "Команда", href: "#team" },
   { text: "Партнёры", href: "#partners" },
   { text: "Контакты", href: "#contacts" },
@@ -70,14 +70,11 @@ export function SiteNav() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-200 glassmorphism",
+        "sticky top-0 z-50 w-full transition-all duration-300",
         isScrolled
-          ? "bg-white/95 shadow-lg"
-          : "bg-white/85 backdrop-blur-xl"
+          ? "glass-ultra"
+          : "glassmorphism-card"
       )}
-      style={{
-        "--tw-shadow-color": "rgba(99,123,139,0.08)",
-      } as React.CSSProperties}
       aria-label="Основная навигация"
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-white px-4 py-2 rounded-md">

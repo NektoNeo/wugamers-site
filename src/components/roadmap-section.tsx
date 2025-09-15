@@ -8,19 +8,19 @@ import roadmapData from "@/data/roadmap.json"
 
 const accentStyles = {
   aqua: {
-    dateBadge: "border-[#7BCDC5] text-[#7BCDC5]",
+    dateBadge: "bg-[#7BCDC5] text-white border-[#7BCDC5]",
     marker: "bg-[#7BCDC5]"
   },
   purple: {
-    dateBadge: "border-[#B597F6] text-[#B597F6]",
+    dateBadge: "bg-[#B597F6] text-white border-[#B597F6]",
     marker: "bg-[#B597F6]"
   },
   green: {
-    dateBadge: "border-[#9BE5C7] text-[#9BE5C7]",
+    dateBadge: "bg-[#9BE5C7] text-[#2F3A46] border-[#9BE5C7]",
     marker: "bg-[#9BE5C7]"
   },
   peach: {
-    dateBadge: "border-[#F6C9C4] text-[#F6C9C4]",
+    dateBadge: "bg-[#F6C9C4] text-[#2F3A46] border-[#F6C9C4]",
     marker: "bg-[#F6C9C4]"
   }
 }
@@ -122,11 +122,12 @@ export default function RoadmapSection() {
                     isLeft
                       ? 'lg:col-span-5 lg:col-start-1'
                       : 'lg:col-span-5 lg:col-start-8'
-                  } relative transition-all duration-700 ${
+                  } relative transition-all duration-700 animate-on-scroll ${
                     visibleItems.has(item.id)
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-10'
                   }`}
+                  style={{ animationDelay: `${index * 0.15}s` }}
                   role="listitem"
                 >
                   {/* Marker - only on desktop */}
@@ -144,13 +145,13 @@ export default function RoadmapSection() {
 
                   {/* Card */}
                   <Card
-                    className="relative glassmorphism-card rounded-2xl p-5 md:p-6 hover:translate-y-[-2px] transition-transform ml-8 lg:ml-0"
+                    className="relative glassmorphism-card rounded-2xl p-5 md:p-6 hover:translate-y-[-2px] hover:bg-white/95 hover:border-2 hover:border-[#7BCDC5] hover:shadow-xl transition-all ml-8 lg:ml-0"
                   >
                     <CardContent className="p-0">
                       {/* Date badge and status */}
                       <div className="flex items-center gap-2">
                         {item.date_display.label && (
-                          <span className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[13px] font-medium ${styles.dateBadge}`}>
+                          <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border-2 text-[14px] font-semibold shadow-md hover:shadow-lg transition-shadow ${styles.dateBadge}`}>
                             {item.date_display.label}
                           </span>
                         )}
@@ -201,12 +202,12 @@ export default function RoadmapSection() {
           {summaryStats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-4 text-center border border-[rgba(99,123,139,0.12)]"
+              className="glassmorphism-card rounded-2xl p-5 text-center hover:scale-105 hover:bg-white/95 hover:border-2 hover:border-[#7BCDC5] hover:shadow-xl transition-all duration-300 group cursor-default"
             >
-              <div className="text-2xl md:text-3xl font-bold text-[#2F3A46]">
+              <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent group-hover:from-teal-500 group-hover:to-cyan-500 transition-all">
                 {stat.value}
               </div>
-              <div className="mt-1 text-sm text-[#6B7785]">
+              <div className="mt-2 text-sm text-[#6B7785] font-medium">
                 {stat.label}
               </div>
             </div>

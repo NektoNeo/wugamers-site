@@ -108,17 +108,17 @@ export default function DonateSection() {
           {/* Panel Body */}
           <div className="bg-white/70 backdrop-blur px-6 py-6">
             <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="grid grid-cols-2 gap-2 p-1 rounded-full bg-white/70 w-full">
+              <TabsList className="grid grid-cols-2 gap-3 p-2 rounded-2xl bg-gray-100/70 border border-gray-200/50 w-full">
                 <TabsTrigger
                   value="iomoney"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[15px] font-medium data-[state=active]:bg-white data-[state=active]:shadow data-[state=active]:text-[#2F3A46] data-[state=inactive]:text-gray-600 transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[15px] font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#7BCDC5] data-[state=active]:to-[#5BA8A8] data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-gray-600 data-[state=inactive]:bg-white/50 transition-all duration-300"
                 >
                   <CreditCard className="w-4 h-4" />
                   IOMoney
                 </TabsTrigger>
                 <TabsTrigger
                   value="yandex_donate"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[15px] font-medium data-[state=active]:bg-white data-[state=active]:shadow data-[state=active]:text-[#2F3A46] data-[state=inactive]:text-gray-600 transition"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[15px] font-semibold data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#B597F6] data-[state=active]:to-[#9370DB] data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=inactive]:text-gray-600 data-[state=inactive]:bg-white/50 transition-all duration-300"
                 >
                   <ShieldCheck className="w-4 h-4" />
                   Yandex Donate
@@ -218,10 +218,10 @@ export default function DonateSection() {
             href={LINKS.telegram}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 border border-gray-200/50 bg-white/70 text-[15px] hover:bg-white transition"
+            className="mt-4 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 border border-gray-300 bg-white text-gray-700 text-[15px] font-medium hover:bg-gray-50 hover:border-gray-400 transition"
           >
-            <Smartphone className="w-4 h-4" />
-            Мобильная версия
+            <Smartphone className="w-4 h-4 text-gray-600" />
+            Открыть в Telegram
           </a>
         </div>
       </div>

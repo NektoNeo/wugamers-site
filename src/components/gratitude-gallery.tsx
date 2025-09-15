@@ -7,6 +7,7 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogTitle,
 } from '@/components/ui/dialog'
 import { Download, ChevronLeft, ChevronRight } from 'lucide-react'
 import gratitudeData from '@/data/gratitude.json'
@@ -208,8 +209,8 @@ export default function GratitudeGallery() {
 
                 <DialogContent
                   className="max-w-4xl bg-white/95 backdrop-blur-sm p-0 overflow-hidden"
-                  showCloseButton={true}
                 >
+                  <DialogTitle className="sr-only">{item.title}</DialogTitle>
                   <div className="relative">
                     {/* Full Image */}
                     <div className="relative max-h-[80vh] overflow-auto">

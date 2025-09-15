@@ -34,8 +34,14 @@ export default function PartnersSection() {
     )
   })
 
-  // Sort partners: featured first, then by category order, then by priority
+  // Sort partners: VA-PC and VA-STUDIO first, then featured, then by category order, then by priority
   const sortedPartners = [...filteredPartners].sort((a: Partner, b: Partner) => {
+    // VA-PC and VA-STUDIO always first
+    if (a.id === 'va-pc') return -1
+    if (b.id === 'va-pc') return 1
+    if (a.id === 'va-studio') return -1
+    if (b.id === 'va-studio') return 1
+
     // Featured first
     if (a.featured && !b.featured) return -1
     if (!a.featured && b.featured) return 1
@@ -56,9 +62,32 @@ export default function PartnersSection() {
   // Duplicate for seamless loop
   const partners = [...sortedPartners, ...sortedPartners]
 
+  // Initialize scroll position to center VA-PC and VA-STUDIO
+  const [isInitialized, setIsInitialized] = useState(false)
+
   useEffect(() => {
     const scrollElement = scrollRef.current
-    if (!scrollElement) return
+    if (!scrollElement || isInitialized) return
+
+    // Find the first partner card to calculate width
+    const cards = scrollElement.querySelectorAll('.partner-logo')
+    if (cards.length > 0) {
+      const firstCard = cards[0] as HTMLElement
+      const containerWidth = scrollElement.clientWidth
+      const cardWidth = firstCard.offsetWidth
+      const gap = 20 // gap between cards
+
+      // Calculate position to center the first two logos (VA-PC and VA-STUDIO)
+      const scrollPosition = 0 // Start at beginning since VA-PC is first
+      scrollElement.scrollLeft = scrollPosition
+      progressRef.current = scrollPosition
+      setIsInitialized(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    const scrollElement = scrollRef.current
+    if (!scrollElement || !isInitialized) return
 
     const animate = () => {
       if (!isPaused && !isDragging && scrollElement) {
@@ -75,14 +104,18 @@ export default function PartnersSection() {
       animationRef.current = requestAnimationFrame(animate)
     }
 
-    animationRef.current = requestAnimationFrame(animate)
+    // Start animation after a short delay
+    const timeoutId = setTimeout(() => {
+      animationRef.current = requestAnimationFrame(animate)
+    }, 3000) // 3 second delay before auto-scroll starts
 
     return () => {
+      clearTimeout(timeoutId)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [isPaused, isDragging])
+  }, [isPaused, isDragging, isInitialized])
 
   const handleMouseDown = (e: React.MouseEvent) => {
     const scrollElement = scrollRef.current
@@ -125,33 +158,31 @@ export default function PartnersSection() {
   }
 
   const PartnerCard = ({ partner }: { partner: Partner }) => {
+    const isVAPC = partner.id === 'va-pc'
+    const isVAStudio = partner.id === 'va-studio'
+    const isSpecialPartner = isVAPC || isVAStudio
+
     const content = (
       <div
         className={cn(
-          "group glassmorphism-card rounded-2xl px-6 py-5 md:px-7 md:py-6 flex items-center gap-4 min-w-[260px] md:min-w-[300px] lg:min-w-[340px] transition-all duration-300",
-          partner.featured && "ring-2 ring-purple-500/65 shadow-[0_0_0_8px_rgba(139,92,246,0.15)] scale-[1.03]"
+          "partner-logo group glassmorphism-card rounded-2xl p-6 md:p-8 flex items-center justify-center min-w-[140px] md:min-w-[180px] lg:min-w-[200px] h-[140px] md:h-[180px] lg:h-[200px] transition-all duration-300 hover:scale-105",
+          partner.featured && !isSpecialPartner && "ring-2 ring-purple-500/30 shadow-[0_0_20px_rgba(139,92,246,0.2)]",
+          isSpecialPartner && "scale-110 ring-2 ring-[#7BCDC5] bg-gradient-to-br from-white/95 to-[#7BCDC5]/20 shadow-[0_0_30px_rgba(123,205,197,0.4)]"
         )}
       >
-        <div className="shrink-0 relative inline-flex items-center justify-center rounded-2xl bg-gradient-to-b from-[#7BCDC5]/10 to-[#7BCDC5]/5 p-3 md:p-4">
-          <Image
-            src={partner.logo}
-            alt={partner.alt}
-            width={partner.featured ? 56 : 48}
-            height={partner.featured ? 56 : 48}
-            className={cn(
-              "object-contain",
-              partner.featured ? "h-12 md:h-14 w-auto" : "h-10 md:h-12 w-auto"
-            )}
-          />
-        </div>
-        <div className="text-center md:text-left">
-          <div className="text-sm md:text-[15px] font-medium text-gray-900">
-            {partner.display_name}
-          </div>
-          <div className="mt-1 text-xs text-gray-600/70">
-            {partner.category}
-          </div>
-        </div>
+        <Image
+          src={partner.logo}
+          alt={partner.alt}
+          width={isSpecialPartner ? 120 : partner.featured ? 100 : 80}
+          height={isSpecialPartner ? 120 : partner.featured ? 100 : 80}
+          className={cn(
+            "object-contain pointer-events-none select-none",
+            isSpecialPartner ? "h-28 md:h-32 lg:h-36 w-auto" :
+            partner.featured ? "h-20 md:h-24 lg:h-28 w-auto" :
+            "h-16 md:h-20 lg:h-24 w-auto"
+          )}
+          draggable={false}
+        />
       </div>
     )
 

@@ -93,7 +93,8 @@ export default function AboutSection() {
             {goals.map((goal, index) => (
               <Card
                 key={index}
-                className={`bg-white rounded-2xl p-6 md:p-7 border ${goal.borderColor} shadow-[0_10px_24px_-12px_rgba(15,45,52,0.08)] transition-all hover:shadow-[0_18px_38px_-16px_rgba(15,45,52,0.08)] hover:translate-y-[2px]`}
+                className={`glassmorphism-card rounded-2xl p-6 md:p-7 border ${goal.borderColor} transition-all hover:scale-105 hover:bg-white/95 hover:border-2 hover:shadow-xl animate-on-scroll`}
+                style={{ animationDelay: `${index * 0.1}s` }}
                 role="listitem"
               >
                 <CardContent className="p-0">
@@ -121,7 +122,7 @@ export default function AboutSection() {
             <a
               key={link.id}
               href={link.href}
-              className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium ${link.className} hover:opacity-95 transition-opacity`}
+              className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium ${link.className} hover:scale-110 transition-all duration-300 hover-glow`}
             >
               <link.icon className="h-4 w-4" />
               {link.label}

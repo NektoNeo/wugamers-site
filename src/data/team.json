@@ -5,7 +5,6 @@
     "kutyreva-ekaterina-nikolaevna",
     "dmitriy-vladimirovich-stepanovich",
     "melnik-anatoliy-vladimirovich",
-    "safronov-andrey-aleksandrovich",
     "anisimov-anton-alekseevich",
     "kok-elizaveta-nikolaevna",
     "isaev-evgeniy-vyacheslavovich",
@@ -58,15 +57,6 @@
       "bio": "Техническое обеспечение турниров, адаптивные решения и IT‑инфраструктура.",
       "photo": "/team/Анатолий.jpg",
       "alt": "Мельник Анатолий Владимирович"
-    },
-    {
-      "id": "safronov-andrey-aleksandrovich",
-      "name": "Сафронов Андрей Александрович",
-      "role": "Медиакоммуникации",
-      "badge": "Медиа и PR",
-      "bio": "Координирует медиа‑активности и информационное сопровождение мероприятий.",
-      "photo": "/team/Сафронов-Андрей-Александрович.jpg",
-      "alt": "Сафронов Андрей Александрович"
     },
     {
       "id": "anisimov-anton-alekseevich",

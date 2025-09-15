@@ -384,9 +384,9 @@ export default function ContactsSection() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-3 py-2 bg-white rounded-lg border border-gray-200 hover:border-[#7BCDC5] hover:bg-[#7BCDC5]/5 transition text-sm"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg border-2 border-gray-300 hover:border-[#7BCDC5] hover:bg-[#7BCDC5]/10 transition-all text-sm font-medium text-[#2F3A46] shadow-sm hover:shadow-md"
                   >
-                    {link.icon}
+                    <span className="text-[#5C9897]">{link.icon}</span>
                     <span>{link.label}</span>
                   </a>
                 ))}
