@@ -28,6 +28,9 @@ export default function GratitudeGallery() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
+  const [isPaused, setIsPaused] = useState(false)
+  const animationRef = useRef<number>()
+  const progressRef = useRef(0)
 
   // Группируем элементы по 4 для десктопа
   const itemsPerSlide = 4
@@ -46,6 +49,35 @@ export default function GratitudeGallery() {
     window.addEventListener("resize", checkScrollButtons)
     return () => window.removeEventListener("resize", checkScrollButtons)
   }, [checkScrollButtons])
+
+  // Auto-scroll effect (opposite direction from partners)
+  useEffect(() => {
+    const scrollElement = scrollContainerRef.current
+    if (!scrollElement) return
+
+    const animate = () => {
+      if (!isPaused && scrollElement) {
+        progressRef.current -= 0.3 // Negative for opposite direction
+
+        const maxScroll = scrollElement.scrollWidth - scrollElement.clientWidth
+        if (progressRef.current <= 0) {
+          progressRef.current = maxScroll
+        }
+
+        scrollElement.scrollLeft = progressRef.current
+      }
+
+      animationRef.current = requestAnimationFrame(animate)
+    }
+
+    animationRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
+  }, [isPaused])
 
   const scrollToSlide = (slideIndex: number) => {
     if (!scrollContainerRef.current) return
@@ -124,7 +156,11 @@ export default function GratitudeGallery() {
         </div>
 
         {/* Carousel */}
-        <div className="mt-10 md:mt-12 relative">
+        <div
+          className="mt-10 md:mt-12 relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Scroll container */}
           <div
             ref={scrollContainerRef}
@@ -144,7 +180,7 @@ export default function GratitudeGallery() {
               <Dialog key={item.id}>
                 <DialogTrigger asChild>
                   <div
-                    className="gratitude-card snap-start shrink-0 w-[280px] md:w-[calc(25%-18px)] group bg-white rounded-2xl overflow-hidden border border-gray-200/50 shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                    className="gratitude-card snap-start shrink-0 w-[280px] md:w-[calc(25%-18px)] group glassmorphism-card rounded-2xl overflow-hidden transition-all cursor-pointer"
                     role="listitem"
                     onClick={() => setSelectedImage(item)}
                   >

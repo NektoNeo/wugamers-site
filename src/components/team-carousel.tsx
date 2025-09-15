@@ -12,6 +12,9 @@ export default function TeamCarousel() {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = React.useState(false)
   const [canScrollRight, setCanScrollRight] = React.useState(true)
+  const [isPaused, setIsPaused] = React.useState(false)
+  const animationRef = React.useRef<number>()
+  const progressRef = React.useRef(0)
 
   const checkScrollButtons = React.useCallback(() => {
     if (scrollContainerRef.current) {
@@ -26,6 +29,35 @@ export default function TeamCarousel() {
     window.addEventListener("resize", checkScrollButtons)
     return () => window.removeEventListener("resize", checkScrollButtons)
   }, [checkScrollButtons])
+
+  // Auto-scroll effect (opposite direction from partners, same as gratitude)
+  React.useEffect(() => {
+    const scrollElement = scrollContainerRef.current
+    if (!scrollElement) return
+
+    const animate = () => {
+      if (!isPaused && scrollElement) {
+        progressRef.current -= 0.4 // Negative for opposite direction, slightly faster
+
+        const maxScroll = scrollElement.scrollWidth - scrollElement.clientWidth
+        if (progressRef.current <= 0) {
+          progressRef.current = maxScroll
+        }
+
+        scrollElement.scrollLeft = progressRef.current
+      }
+
+      animationRef.current = requestAnimationFrame(animate)
+    }
+
+    animationRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
+    }
+  }, [isPaused])
 
   const scrollByCardWidth = (direction: "left" | "right") => {
     if (!scrollContainerRef.current) return
@@ -58,7 +90,11 @@ export default function TeamCarousel() {
         </div>
 
         {/* Carousel */}
-        <div className="mt-10 md:mt-12 relative">
+        <div
+          className="mt-10 md:mt-12 relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Fade edges */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[rgba(228,245,249,1)] to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[rgba(241,237,248,1)] to-transparent z-10" />
@@ -82,7 +118,7 @@ export default function TeamCarousel() {
               {teamData.members.map((member) => (
                 <Card
                   key={member.id}
-                  className="team-card group snap-start shrink-0 w-[260px] md:w-[320px] lg:w-[360px] bg-white rounded-[1rem] border border-[rgba(99,123,139,0.16)] shadow-[0_14px_28px_-16px_rgba(15,45,52,0.08)] overflow-hidden focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-[rgba(123,205,197,0.60)]"
+                  className="team-card group snap-start shrink-0 w-[260px] md:w-[320px] lg:w-[360px] glassmorphism-card rounded-[1rem] overflow-hidden focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-purple-500/60"
                   role="listitem"
                 >
                   <CardContent className="p-0">

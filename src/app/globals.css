@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f8f9ff;
   --foreground: #171717;
+  --primary-purple: #8b5cf6;
+  --primary-blue: #3b82f6;
+  --primary-teal: #14b8a6;
+  --gradient-purple: linear-gradient(135deg, #a855f7 0%, #8b5cf6 50%, #7c3aed 100%);
+  --gradient-blue: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+  --gradient-teal: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #0d9488 100%);
+  --glassmorphism-bg: rgba(255, 255, 255, 0.7);
+  --glassmorphism-border: rgba(255, 255, 255, 0.2);
 }
 
 @theme inline {
@@ -16,13 +24,16 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --glassmorphism-bg: rgba(0, 0, 0, 0.7);
+    --glassmorphism-border: rgba(255, 255, 255, 0.1);
   }
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(180deg, #f8f9ff 0%, #e9e8ff 50%, #f3f0ff 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
 /* Robot floating animation */
@@ -54,4 +65,145 @@ body {
 
 .animate-glow {
   animation: glow 4s ease-in-out infinite;
+}
+
+/* Glassmorphism utility classes */
+.glassmorphism {
+  background: var(--glassmorphism-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glassmorphism-border);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.1);
+}
+
+.glassmorphism-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.15),
+              0 4px 16px 0 rgba(139, 92, 246, 0.1);
+}
+
+/* Button styles */
+.btn-purple-gradient {
+  background: var(--gradient-purple);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px 0 rgba(139, 92, 246, 0.3);
+}
+
+.btn-purple-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px 0 rgba(139, 92, 246, 0.4);
+}
+
+.btn-teal-gradient {
+  background: var(--gradient-teal);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px 0 rgba(20, 184, 166, 0.3);
+}
+
+.btn-teal-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px 0 rgba(20, 184, 166, 0.4);
+}
+
+.btn-outline-teal {
+  background: transparent;
+  color: var(--primary-teal);
+  border: 2px solid var(--primary-teal);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-teal:hover {
+  background: var(--gradient-teal);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+/* Animated gradient text */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-text {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6, #a855f7, #3b82f6, #60a5fa);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 3s ease infinite;
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-on-scroll.in-view {
+  opacity: 1;
+}
+
+/* Auto-scroll animations */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.auto-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+.auto-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+/* Draggable carousel */
+.draggable-carousel {
+  cursor: grab;
+  user-select: none;
+}
+
+.draggable-carousel:active {
+  cursor: grabbing;
+}
+
+.draggable-carousel.dragging {
+  scroll-behavior: auto !important;
 }

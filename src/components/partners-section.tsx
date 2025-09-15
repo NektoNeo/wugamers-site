@@ -19,6 +19,9 @@ interface Partner {
 
 export default function PartnersSection() {
   const [isPaused, setIsPaused] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
   const scrollRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<number>()
   const progressRef = useRef(0)
@@ -58,7 +61,7 @@ export default function PartnersSection() {
     if (!scrollElement) return
 
     const animate = () => {
-      if (!isPaused && scrollElement) {
+      if (!isPaused && !isDragging && scrollElement) {
         progressRef.current += 0.5 // Speed in pixels per frame
 
         const maxScroll = scrollElement.scrollWidth / 2
@@ -79,14 +82,54 @@ export default function PartnersSection() {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [isPaused])
+  }, [isPaused, isDragging])
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const scrollElement = scrollRef.current
+    if (!scrollElement) return
+
+    setIsDragging(true)
+    setStartX(e.pageX - scrollElement.offsetLeft)
+    setScrollLeft(scrollElement.scrollLeft)
+    scrollElement.classList.add('dragging')
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return
+    e.preventDefault()
+
+    const scrollElement = scrollRef.current
+    if (!scrollElement) return
+
+    const x = e.pageX - scrollElement.offsetLeft
+    const walk = (x - startX) * 1.5
+    const newScrollLeft = scrollLeft - walk
+
+    scrollElement.scrollLeft = newScrollLeft
+    progressRef.current = newScrollLeft
+  }
+
+  const handleMouseUp = () => {
+    const scrollElement = scrollRef.current
+    if (scrollElement) {
+      scrollElement.classList.remove('dragging')
+    }
+    setIsDragging(false)
+  }
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      handleMouseUp()
+    }
+    setIsPaused(false)
+  }
 
   const PartnerCard = ({ partner }: { partner: Partner }) => {
     const content = (
       <div
         className={cn(
-          "group bg-white rounded-2xl border border-gray-200/50 shadow-lg px-6 py-5 md:px-7 md:py-6 flex items-center gap-4 min-w-[260px] md:min-w-[300px] lg:min-w-[340px] transition-all duration-300",
-          partner.featured && "ring-2 ring-[#7BCDC5]/65 shadow-[0_0_0_8px_rgba(123,205,197,0.15)] scale-[1.03]"
+          "group glassmorphism-card rounded-2xl px-6 py-5 md:px-7 md:py-6 flex items-center gap-4 min-w-[260px] md:min-w-[300px] lg:min-w-[340px] transition-all duration-300",
+          partner.featured && "ring-2 ring-purple-500/65 shadow-[0_0_0_8px_rgba(139,92,246,0.15)] scale-[1.03]"
         )}
       >
         <div className="shrink-0 relative inline-flex items-center justify-center rounded-2xl bg-gradient-to-b from-[#7BCDC5]/10 to-[#7BCDC5]/5 p-3 md:p-4">
@@ -146,7 +189,7 @@ export default function PartnersSection() {
         <div
           className="mt-10 md:mt-12 relative"
           onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          onMouseLeave={handleMouseLeave}
         >
           {/* Fade gradients */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-10 md:w-20 bg-gradient-to-r from-[#F1F6FB] to-transparent z-10" />
@@ -156,9 +199,12 @@ export default function PartnersSection() {
           <div className="relative overflow-hidden">
             <div
               ref={scrollRef}
-              className="flex overflow-x-hidden"
+              className="flex overflow-x-hidden draggable-carousel"
               role="list"
               aria-label="Лента логотипов, прокручивается автоматически"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
             >
               <div className="flex items-center gap-5 md:gap-6 will-change-transform">
                 {partners.map((partner, index) => (

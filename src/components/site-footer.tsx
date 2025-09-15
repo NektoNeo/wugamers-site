@@ -83,15 +83,19 @@ export default function SiteFooter() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
         {/* Brand Column */}
         <div className="md:col-span-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#7BCDC5] to-[#5C9897] rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl">WU</span>
-            </div>
+          <div className="flex items-center gap-4 mb-6">
+            <Image
+              src="/brand/logo-mark.png"
+              alt="АНО «Уникальный мир»"
+              width={80}
+              height={60}
+              className="h-16 md:h-20 w-auto"
+            />
             <div>
-              <h3 className="text-lg font-bold text-white">
-                Мир уникальных геймеров
+              <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                WU GAMERS
               </h3>
-              <p className="text-sm text-white/60">WUGamers</p>
+              <p className="text-sm text-white/60">Мир уникальных геймеров</p>
             </div>
           </div>
           <p className="text-sm text-white/70 max-w-md">

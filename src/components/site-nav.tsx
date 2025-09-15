@@ -70,10 +70,10 @@ export function SiteNav() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-200",
+        "sticky top-0 z-50 w-full transition-all duration-200 glassmorphism",
         isScrolled
-          ? "bg-white/95 shadow-[0_6px_20px_-8px_rgba(15,45,52,0.10)]"
-          : "bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[0_1px_0_0_rgba(99,123,139,0.08)]"
+          ? "bg-white/95 shadow-lg"
+          : "bg-white/85 backdrop-blur-xl"
       )}
       style={{
         "--tw-shadow-color": "rgba(99,123,139,0.08)",
@@ -84,17 +84,18 @@ export function SiteNav() {
         Перейти к содержанию
       </a>
 
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-6 h-[72px] flex items-center justify-between gap-6">
+      <div className="w-full max-w-7xl mx-auto px-4 md:px-6 h-[80px] flex items-center justify-between gap-6">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
+        <Link href="/" className="flex-shrink-0 flex items-center gap-3">
           <Image
             src="/brand/logo-mark.png"
             alt="АНО «Уникальный мир»"
-            width={48}
-            height={32}
-            className="h-7 md:h-8 w-auto"
+            width={72}
+            height={48}
+            className="h-12 md:h-14 w-auto"
             priority
           />
+          <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">WU GAMERS</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -105,10 +106,10 @@ export function SiteNav() {
                 href={item.href}
                 onClick={(e) => handleClick(e, item.href)}
                 className={cn(
-                  "text-[15px] md:text-[16px] transition-colors px-3 py-2 rounded-md cursor-pointer",
+                  "text-[15px] md:text-[16px] transition-all px-4 py-2 rounded-full cursor-pointer",
                   isActive(item.href)
-                    ? "text-[#2F3A46]"
-                    : "text-[#616A78] hover:text-[#2F3A46]"
+                    ? "text-white bg-gradient-to-r from-purple-500 to-purple-600 shadow-md"
+                    : "text-[#616A78] hover:text-purple-600 hover:bg-purple-50"
                 )}
               >
                 {item.text}
@@ -121,7 +122,7 @@ export function SiteNav() {
         <div className="flex items-center gap-3">
           <Button
             asChild
-            className="inline-flex items-center gap-2 rounded-full px-4 md:px-5 py-2.5 text-[15px] font-medium shadow-sm bg-gradient-to-r from-[#7BCDC5] to-[#8DDCDA] text-[#0F2A2E] hover:opacity-90 transition-opacity"
+            className="btn-purple-gradient inline-flex items-center gap-2 rounded-full px-5 md:px-6 py-2.5 md:py-3 text-[15px] font-semibold transition-all"
           >
             <a
               href="https://t.me/wugamers"

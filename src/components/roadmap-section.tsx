@@ -1,3 +1,6 @@
+"use client"
+
+import React, { useEffect, useRef, useState } from "react"
 import { MapPin, Building2, Building } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -43,6 +46,38 @@ const summaryStats = [
 ]
 
 export default function RoadmapSection() {
+  const [visibleItems, setVisibleItems] = useState<Set<string>>(new Set())
+  const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('data-id')
+            if (id) {
+              setVisibleItems((prev) => new Set(prev).add(id))
+            }
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    )
+
+    Object.values(itemRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => {
+      Object.values(itemRefs.current).forEach((ref) => {
+        if (ref) observer.unobserve(ref)
+      })
+    }
+  }, [])
+
   return (
     <section
       className="relative overflow-hidden py-14 md:py-20 bg-gradient-to-r from-[#E4F5F9] to-[#F1EDF8]"
@@ -81,11 +116,17 @@ export default function RoadmapSection() {
               return (
                 <div
                   key={item.id}
+                  ref={(el) => { itemRefs.current[item.id] = el }}
+                  data-id={item.id}
                   className={`col-span-1 ${
                     isLeft
                       ? 'lg:col-span-5 lg:col-start-1'
                       : 'lg:col-span-5 lg:col-start-8'
-                  } relative`}
+                  } relative transition-all duration-700 ${
+                    visibleItems.has(item.id)
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-10'
+                  }`}
                   role="listitem"
                 >
                   {/* Marker - only on desktop */}
@@ -103,7 +144,7 @@ export default function RoadmapSection() {
 
                   {/* Card */}
                   <Card
-                    className="relative bg-white border border-[rgba(99,123,139,0.20)] rounded-2xl p-5 md:p-6 shadow-[0_16px_32px_-18px_rgba(15,45,52,0.08)] hover:translate-y-[2px] transition-transform ml-8 lg:ml-0"
+                    className="relative glassmorphism-card rounded-2xl p-5 md:p-6 hover:translate-y-[-2px] transition-transform ml-8 lg:ml-0"
                   >
                     <CardContent className="p-0">
                       {/* Date badge and status */}

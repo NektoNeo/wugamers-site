@@ -17,7 +17,7 @@ export default function Home() {
       {/* Hero Section */}
       <main
         id="hero"
-        className="relative overflow-hidden bg-gradient-to-r from-[#E4F5F9] to-[#EBEEF7] py-10 md:py-16 lg:py-24"
+        className="relative overflow-hidden py-10 md:py-16 lg:py-24"
         role="main"
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -25,11 +25,11 @@ export default function Home() {
             {/* Copy Section */}
             <div className="lg:col-span-6 text-center lg:text-left">
               {/* Headlines */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#5BA8A8] uppercase">
-                Развитие специального
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#2F3A46] uppercase">
+                Развитие <span className="animated-gradient-text">специального</span>
               </h1>
-              <h1 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[#43B7B4] uppercase">
-                кибердвижения и фиджитал-спорта
+              <h1 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight uppercase">
+                <span className="animated-gradient-text">кибердвижения и</span> <span className="text-[#2F3A46]">фиджитал-спорта</span>
               </h1>
 
               {/* Subheadline */}
@@ -43,22 +43,22 @@ export default function Home() {
               </p>
 
               {/* KPI Statistics */}
-              <div className="mt-8 grid grid-cols-2 gap-x-10 gap-y-6 lg:flex lg:gap-10 lg:items-end">
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-semibold text-[#2F3A46]">7+</div>
-                  <div className="text-sm text-[#5E6A75] uppercase tracking-wide">лет</div>
+              <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+                <div className="glassmorphism-card rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">7</div>
+                  <div className="text-sm text-[#5E6A75] mt-1">лет проекту</div>
                 </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-semibold text-[#2F3A46]">30+</div>
-                  <div className="text-sm text-[#5E6A75] uppercase tracking-wide">мероприятий</div>
+                <div className="glassmorphism-card rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">30+</div>
+                  <div className="text-sm text-[#5E6A75] mt-1">мероприятий</div>
                 </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-semibold text-[#2F3A46]">10K+</div>
-                  <div className="text-sm text-[#5E6A75] uppercase tracking-wide">участников</div>
+                <div className="glassmorphism-card rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent">10K+</div>
+                  <div className="text-sm text-[#5E6A75] mt-1">участников</div>
                 </div>
-                <div className="text-center lg:text-left">
-                  <div className="text-3xl font-semibold text-[#2F3A46]">15</div>
-                  <div className="text-sm text-[#5E6A75] uppercase tracking-wide">стран</div>
+                <div className="glassmorphism-card rounded-2xl p-4 text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent">15</div>
+                  <div className="text-sm text-[#5E6A75] mt-1">стран<br/>сотрудничества</div>
                 </div>
               </div>
 
@@ -69,15 +69,21 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Открыть Telegram для участия"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 bg-gradient-to-r from-[#7BCDC5] to-[#8DDCDA] text-[#0F2A2E] font-medium shadow-sm hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 btn-purple-gradient text-white font-semibold transition-all"
                 >
-                  Присоединиться
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.384,22.779c0.322,0.228 0.737,0.285 1.107,0.145c0.37,-0.141 0.642,-0.457 0.724,-0.84c0.869,-4.084 2.977,-14.421 3.768,-18.136c0.06,-0.28 -0.04,-0.571 -0.26,-0.758c-0.22,-0.187 -0.525,-0.241 -0.797,-0.14c-4.193,1.552 -17.106,6.397 -22.384,8.35c-0.335,0.124 -0.553,0.446 -0.542,0.799c0.012,0.354 0.25,0.661 0.593,0.764c2.367,0.708 5.474,1.693 5.474,1.693c0,0 1.452,4.385 2.209,6.615c0.095,0.28 0.314,0.5 0.603,0.576c0.288,0.075 0.596,-0.004 0.811,-0.207c1.216,-1.148 3.096,-2.923 3.096,-2.923c0,0 3.572,2.619 5.598,4.062Zm-11.01,-8.677l1.679,5.538l0.373,-3.507c0,0 6.487,-5.851 10.185,-9.186c0.108,-0.098 0.123,-0.262 0.033,-0.377c-0.089,-0.115 -0.253,-0.142 -0.376,-0.064c-4.286,2.737 -11.894,7.596 -11.894,7.596Z"/>
+                  </svg>
+                  Хочу участвовать!
                 </a>
                 <a
                   href="#about"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 bg-white border border-[rgba(99,123,139,0.25)] text-[#2F3A46] font-medium hover:bg-gray-50 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 btn-outline-teal font-semibold transition-all"
                 >
-                  Узнать больше
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                  Узнать подробнее
                 </a>
               </div>
             </div>
