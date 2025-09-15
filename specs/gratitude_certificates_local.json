@@ -1,0 +1,74 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "gratitude_certificates_local",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"]
+  },
+  "assets": [
+    { "id": "gratitude_ref", "type": "image/png", "source_name": "Section-6.png", "role": "visual_reference" }
+  ],
+  "layout": {
+    "class": "relative overflow-hidden py-14 md:py-20 bg-gradient-to-r from-[#E4F5F9] to-[#F1EDF8]",
+    "children": [
+      { "id": "container", "class": "max-w-7xl mx-auto px-4 md:px-6" },
+      {
+        "id": "header",
+        "class": "text-center max-w-3xl mx-auto",
+        "children": [
+          { "type": "heading", "as": "h2", "text": "Благодарности", "class": "text-3xl md:text-4xl font-bold text-[#2F3A46]" },
+          { "type": "sub", "as": "p", "text": "Признание нашей работы от государственных структур, партнёров и участников проекта", "class": "mt-3 text-base md:text-lg text-[#6B7785]" }
+        ]
+      },
+      { "id": "grid", "class": "mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7" },
+      {
+        "id": "stats_row",
+        "class": "mt-12 md:mt-16 max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white/60 rounded-2xl p-6 border border-[rgba(99,123,139,0.16)] shadow-[0_24px_48px_-24px_rgba(15,45,52,0.10)]"
+      }
+    ]
+  },
+  "content": {
+    "type": "gratitude_gallery",
+    "card_component": {
+      "class": "group bg-white rounded-2xl overflow-hidden border border-[rgba(99,123,139,0.16)] shadow-[0_16px_32px_-18px_rgba(15,45,52,0.10)] hover:shadow-[0_24px_48px_-22px_rgba(15,45,52,0.10)] transition-all",
+      "parts": {
+        "media": "aspect-[4/3] overflow-hidden",
+        "img": "w-full h-full object-cover",
+        "body": "p-5",
+        "title": "text-[17px] font-semibold text-[#2F3A46]",
+        "meta": "mt-1 text-[13px] text-[#6B7785]"
+      }
+    },
+    "lightbox": { "enabled": true, "caption_from": "title | issuer", "download_button": true },
+    "summary_stats": [
+      { "value": "15+", "label": "Официальных благодарностей" },
+      { "value": "200+", "label": "Благодарностей от семей" },
+      { "value": "5", "label": "Государственных наград" }
+    ],
+    "bindings": {
+      "project_manifest": "ano-unikalnyy-mir.manifest.json",
+      "data_source": {
+        "kind": "file",
+        "path": "/data/gratitude.json",
+        "schema": "items[]: {id,title,issuer?,date_label?,thumb?,full}"
+      },
+      "assets_folder": "/assets/gratitude/"
+    }
+  },
+  "constraints": { "position": "after_partners_at_page_bottom" },
+  "accessibility": {
+    "landmark": "section",
+    "aria_labels": { "section": "Письма благодарности — галерея грамот" },
+    "roles": { "gallery": "list", "card": "listitem" }
+  },
+  "quality_gates": [
+    { "type": "a11y", "level": "AA" },
+    { "type": "visual_review", "notes": "Карточки — превью грамот, полноразмер в лайтбоксе. Блок размещать после партнёров." }
+  ],
+  "output": {
+    "format": "file_tree",
+    "files": ["components/gratitude-gallery.tsx","data/gratitude.json","assets/gratitude/README.txt"]
+  }
+}

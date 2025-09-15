@@ -1,0 +1,119 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "site_footer_dark",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"]
+  },
+  "assets": [
+    { "id": "footer_png_ref", "type": "image/png", "source_name": "Footer.png", "role": "visual_reference" }
+  ],
+  "layout": {
+    "class": "relative bg-[radial-gradient(120%_120%_at_0%_0%,#12212B_0%,#0E1A22_40%,#0B1720_100%)] text-white/90",
+    "children": [
+      {
+        "id": "top",
+        "class": "max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10"
+      },
+      {
+        "id": "divider",
+        "class": "max-w-7xl mx-auto px-4 md:px-6 border-t border-white/10"
+      },
+      {
+        "id": "mid",
+        "class": "max-w-7xl mx-auto px-4 md:px-6 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-white/60 text-sm"
+      },
+      {
+        "id": "bottom",
+        "class": "max-w-7xl mx-auto px-4 md:px-6 py-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-4 text-sm text-white/60"
+      }
+    ]
+  },
+  "content": {
+    "type": "footer",
+    "brand": {
+      "logo": {
+        "src": "/assets/brand/logo-mark.png",
+        "alt": "АНО «Уникальный мир»",
+        "intrinsic": { "w": 768, "h": 512 },
+        "theme": { "on_dark": "default" },
+        "type": "raster"
+      },
+      "title": "Мир уникальных геймеров",
+      "subtitle": "WUGamers",
+      "about": "Специальный инклюзивный проект по киберспорту и кибербезопасности для детей, подростков и молодёжи с ограниченными возможностями."
+    },
+    "socials": [
+      { "id": "tg", "icon": "lucide:send", "label": "Telegram", "href": "https://t.me/wugamers" },
+      { "id": "vk", "icon": "lucide:users-round", "label": "VK", "href": "https://vk.com/wugamers?from=groups" },
+      { "id": "yt", "icon": "lucide:play-circle", "label": "YouTube", "href": "https://www.youtube.com/channel/UCuM6pM5taq-a5oZg2SIYJUw" },
+      { "id": "rt", "icon": "lucide:video", "label": "RuTube", "href": "https://rutube.ru/channel/56489051/" }
+    ],
+    "nav_columns": [
+      {
+        "title": "Навигация",
+        "links": [
+          { "label": "О проекте", "href": "/#about" },
+          { "label": "Миссия и цели", "href": "/#mission" },
+          { "label": "Принять участие", "href": "/#join" },
+          { "label": "Поддержать проект", "href": "/#donate" }
+        ]
+      },
+      {
+        "title": "Контакты",
+        "links": [
+          { "label": "info@wugamers.ru", "href": "mailto:info@wugamers.ru", "icon": "lucide:mail" },
+          { "label": "+7 (977) 104-00-00", "href": "tel:+79771040000", "icon": "lucide:phone" },
+          { "label": "cio@wugamers.ru", "href": "mailto:cio@wugamers.ru", "icon": "lucide:life-buoy" }
+        ]
+      }
+    ],
+    "mid_row": [
+      { "label": "Новости", "href": "/news" },
+      { "label": "Партнёры", "href": "/#partners" },
+      { "label": "Команда", "href": "/#team" },
+      { "label": "Контакты", "href": "/#contacts" }
+    ],
+    "bottom_row": {
+      "copyright": "© {{year}} АНО «Уникальный мир». Все права защищены.",
+      "legal": [
+        { "label": "Политика конфиденциальности", "href": "/legal/privacy" },
+        { "label": "Пользовательское соглашение", "href": "/legal/terms" }
+      ]
+    }
+  },
+  "behavior": {
+    "year_runtime_substitution": true
+  },
+  "accessibility": {
+    "landmark": "contentinfo",
+    "aria_labels": {
+      "socials": "Социальные сети организации",
+      "nav": "Навигация по сайту",
+      "contacts": "Контактная информация"
+    },
+    "focus": { "ring": "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7BCDC5] focus:ring-offset-[#0E1A22]" }
+  },
+  "responsiveness": [
+    { "bp": "md", "rules": [
+      "top:grid-cols-[minmax(0,6fr)_minmax(0,3fr)_minmax(0,3fr)]",
+      "brand:max-w-[520px]"
+    ] }
+  ],
+  "component_mapping": {
+    "icon_button": { "library": "shadcn", "component": "Button" }
+  },
+  "quality_gates": [
+    { "type": "a11y", "level": "AA", "notes": "Проверить контраст на тёмном фоне ≥ 4.5:1" },
+    { "type": "visual_review", "notes": "Сравнить отступы/сетку с макетом Footer.png" }
+  ],
+  "mcp_preferences": {
+    "use": ["context7","sequential-thinking"]
+  },
+  "output": {
+    "format": "file_tree",
+    "files": ["components/site-footer.tsx","assets/logo-mark.svg","styles/globals.css"]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "project": {
+    "id": "ano-unikalnyy-mir",
+    "name": "АНО «Уникальный мир»",
+    "tagline": "Мир уникальных геймеров (WUGamers)"
+  },
+  "content_sources": {
+    "promo_video": "https://www.youtube.com/channel/UCuM6pM5taq-a5oZg2SIYJUw",
+    "project_presentation_ru": "https://wugamers.ru/wp-content/uploads/2022/05/Презентация_WUG2022.pdf",
+    "project_presentation_en": "https://wugamers.ru/wp-content/uploads/2021/04/WUG2021_ENGv1.pdf",
+    "anthem": "https://www.youtube.com/channel/UCuM6pM5taq-a5oZg2SIYJUw",
+    "telegram": "https://t.me/wugamers",
+    "socials": {
+      "rutube": "https://rutube.ru/channel/56489051/",
+      "vk": "https://vk.com/wugamers?from=groups",
+      "youtube": "https://www.youtube.com/channel/UCuM6pM5taq-a5oZg2SIYJUw"
+    }
+  },
+  "donate": {
+    "iomoney": "https://sobe.ru/na/Q2S2i066P0Q9",
+    "yandex_donate": "https://donate.stream/wugamers_ru"
+  },
+  "contacts": {
+    "email": "unikmir@mail.ru",
+    "phone": "+7 (977) 104-00-00",
+    "office_city": "Москва, Россия"
+  },
+  "data_paths": {
+    "events": "/data/events.json",
+    "team": "/data/team.json",
+    "partners": "/data/partners.json",
+    "gratitude": "/data/gratitude.json",
+    "roadmap": "/data/roadmap.json"
+  },
+  "rules": {
+    "partners": {
+      "ordering": ["госструктуры","ФКС России","Федерация гонок дронов России","СМИ","партнёры","НКО"],
+      "exclude": ["GEOSCAN", "Street Media Group"],
+      "featured_first": true
+    },
+    "team": { "exclude_names": ["Журков"] },
+    "gratitude": { "place_after_partners": true }
+  }
+}

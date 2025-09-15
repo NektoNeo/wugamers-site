@@ -1,0 +1,87 @@
+{
+  "items": [
+    {
+      "id": "2023-07-12-duathlon-rus-africa",
+      "side": "left",
+      "accent": "aqua",
+      "date_display": { "label": "12 июля 2023" },
+      "title": "Международный инклюзивный турнир‑дуатлон",
+      "description": "По интерактивному и классическому футболу Россия–Африканские страны",
+      "meta": [
+        { "icon": "lucide:map-pin", "text": "Парк Победы, Москва" }
+      ]
+    },
+    {
+      "id": "2023-07-30-wot-uav-phygital",
+      "side": "right",
+      "accent": "purple",
+      "date_display": { "label": "30 июля 2023" },
+      "title": "Турнир «Мир танков» и БПЛА‑фиджитал",
+      "description": "Для детей, подростков и молодёжи с НЕограниченными возможностями",
+      "meta": [
+        { "icon": "lucide:building-2", "text": "СПбГУ" }
+      ]
+    },
+    {
+      "id": "2024-04-13-world-of-warships",
+      "side": "left",
+      "accent": "green",
+      "date_display": { "label": "13 апреля 2024" },
+      "title": "Турнир «Мир Кораблей»",
+      "description": "Международный инклюзивный турнир",
+      "meta": [
+        { "icon": "lucide:map-pin", "text": "Вологда" }
+      ]
+    },
+    {
+      "id": "2024-10-uav-international",
+      "side": "right",
+      "accent": "purple",
+      "date_display": { "label": "Октябрь 2024" },
+      "title": "Международный инклюзивный турнир по БПЛА",
+      "description": "Соревнования беспилотных летательных аппаратов",
+      "meta": []
+    },
+    {
+      "id": "2025-01-moscow-mayor-grants",
+      "side": "left",
+      "accent": "aqua",
+      "date_display": { "label": "Январь 2025" },
+      "title": "Победители грантов Мэра Москвы",
+      "description": "Получение государственной поддержки для развития проекта",
+      "meta": []
+    },
+    {
+      "id": "2025-spring-sono-status",
+      "side": "right",
+      "accent": "purple",
+      "date_display": { "label": "Весна 2025" },
+      "title": "Статус социально ориентированной НКО",
+      "description": "Официальное признание социальной значимости проекта",
+      "meta": [
+        { "icon": "lucide:map-pin", "text": "Москва" }
+      ]
+    },
+    {
+      "id": "2025-06-drone-racing-masterclasses",
+      "side": "left",
+      "accent": "green",
+      "date_display": { "label": "Июнь 2025" },
+      "title": "Серия мастер‑классов по дрон‑рейсингу",
+      "description": "Образовательная программа для развития навыков управления БПЛА",
+      "meta": []
+    },
+    {
+      "id": "2025-xx-duma-conference",
+      "side": "right",
+      "accent": "peach",
+      "date_display": { "label": "" },
+      "title": "Конференция в Государственной Думе РФ",
+      "description": "«Развитие фиджитал‑спорта как социокультурного феномена…»",
+      "meta": [
+        { "icon": "lucide:building", "text": "Государственная Дума РФ" }
+      ],
+      "status_chip": { "text": "Планируется", "tone": "info" }
+    }
+  ]
+}

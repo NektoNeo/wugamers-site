@@ -1,0 +1,128 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "nav_sticky",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"],
+    "tokens": {
+      "font_primary": "Inter, system-ui, sans-serif",
+      "container": "max-w-7xl mx-auto px-4 md:px-6",
+      "nav_height_px": 72,
+      "radius_full": "9999px",
+      "colors": {
+        "nav_bg": "#FCFDFD",
+        "text_primary": "#616A78",
+        "text_hover": "#2F3A46",
+        "cta_grad_from": "#7BCDC5",
+        "cta_grad_to": "#8DDCDA",
+        "cta_text": "#0F2A2E",
+        "divider": "rgba(99, 123, 139, 0.08)",
+        "shadow": "rgba(15, 45, 52, 0.06)"
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "nav_png_ref",
+      "type": "image/png",
+      "source_name": "Nav.png",
+      "hash_sha1": "126f098c918f8ef14878c8aea04d9df54259832a",
+      "role": "visual_reference"
+    }
+  ],
+  "layout": {
+    "display": "flex",
+    "class": "sticky top-0 z-50 w-full bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-[0_1px_0_0_var(--tw-shadow-color)]",
+    "style": {
+      "--tw-shadow-color": "rgba(99,123,139,0.08)"
+    },
+    "children": [
+      {
+        "id": "container",
+        "class": "w-full {{meta.tokens.container}} h-[72px] flex items-center justify-between gap-6"
+      }
+    ]
+  },
+  "content": {
+    "type": "nav",
+    "logo": {
+      "image": {
+        "src": "/assets/brand/logo-mark.png",
+        "alt": "АНО «Уникальный мир»",
+        "intrinsic": { "w": 768, "h": 512 },
+        "type": "raster"
+      },
+      "link": "/",
+      "class": "h-7 md:h-8 w-auto"   // высота в навбаре: 28–32 px; ширина пропорционально
+    }
+    "menu": {
+      "align": "center",
+      "items": [
+        { "text": "Главная",     "href": "/" },
+        { "text": "О нас",       "href": "/about" },
+        { "text": "Мероприятия", "href": "/events" },
+        { "text": "Команда",     "href": "/team" },
+        { "text": "Партнёры",    "href": "/partners" },
+        { "text": "Контакты",    "href": "/contacts" }
+      ],
+      "item_class": "text-[15px] md:text-[16px] text-[color:var(--nav-text,#616A78)] hover:text-[color:var(--nav-text-hover,#2F3A46)] transition-colors px-3 py-2 rounded-md"
+    },
+    "cta": {
+      "text": "Принять участие",
+      "action": "open_telegram_bot",
+      "href": "https://t.me/wugamers",
+      "class": "inline-flex items-center gap-2 rounded-full px-4 md:px-5 py-2.5 text-[15px] font-medium shadow-sm bg-gradient-to-r from-[#7BCDC5] to-[#8DDCDA] text-[color:var(--cta-text,#0F2A2E)]",
+      "icon_left": "lucide:message-circle"
+    }
+  },
+  "behavior": {
+    "sticky": true,
+    "scroll_effects": [
+      {
+        "when": "scrolled>8px",
+        "apply_class_to": "root",
+        "class": "bg-white/95 shadow-[0_6px_20px_-8px_rgba(15,45,52,0.10)]"
+      }
+    ],
+    "active_link": {
+      "strategy": "pathname_starts_with",
+      "class": "text-[color:var(--nav-text-hover,#2F3A46)]"
+    },
+    "mobile": {
+      "breakpoint": "md",
+      "menu_variant": "sheet",
+      "trigger_class": "md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-[rgba(99,123,139,0.18)]",
+      "sheet_class": "p-4 flex flex-col gap-2",
+      "item_class": "text-lg py-2 px-2 rounded-md"
+    }
+  },
+  "accessibility": {
+    "landmark": "nav",
+    "aria_labels": { "nav": "Основная навигация", "cta": "Открыть Telegram для участия" },
+    "skip_link": { "text": "Перейти к содержанию", "href": "#main", "class": "sr-only focus:not-sr-only" }
+  },
+  "responsiveness": [
+    { "bp": "sm", "rules": ["logo:h-8", "hide:menu", "show:mobile_trigger"] },
+    { "bp": "md", "rules": ["show:menu", "hide:mobile_trigger"] }
+  ],
+  "component_mapping": {
+    "nav": { "library": "shadcn", "component": "NavigationMenu" },
+    "mobile_menu": { "library": "shadcn", "component": "Sheet" },
+    "button": { "library": "shadcn", "component": "Button" }
+  },
+  "quality_gates": [
+    { "type": "a11y", "level": "AA" },
+    { "type": "visual_review", "notes": "Сверить цвет CTA-градиента с макетом (#7BCDC5→#8DDCDA), высоту 72px, фиксированность при прокрутке" }
+  ],
+  "mcp_preferences": {
+    "use": ["context7","sequential-thinking"],
+    "context7": { "libraries": ["/tailwindcss/tailwindcss","/radix-ui/react"] },
+    "sequential-thinking": { "plan": ["сетка","типографика","адаптив","a11y","sticky/scroll"] }
+  },
+  "output": {
+    "format": "file_tree",
+    "files": ["components/site-nav.tsx","styles/globals.css"]
+  }
+}

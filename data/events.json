@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "id": "2025-03-15-world-of-tanks-uav-fidgital",
+      "title": "Мир танков и БПЛА‑фиджитал",
+      "date": "2025-03-15",
+      "location": "Парк Победы",
+      "description": "Инклюзивный турнир для начинающих игроков.",
+      "status": "Скоро",
+      "accent": "aqua",
+      "links": {
+        "details": "/events/world-of-tanks-uav-2025-03-15",
+        "apply": null
+      }
+    },
+    {
+      "id": "2025-03-22-drone-racing-masterclass",
+      "title": "Мастер‑класс по дрон‑рейсингу",
+      "date": "2025-03-22",
+      "location": "Онлайн / Москва",
+      "description": "Обучающая программа для всех желающих.",
+      "status": "Скоро",
+      "accent": "purple",
+      "links": {
+        "details": "/events/drone-racing-masterclass-2025-03-22",
+        "apply": null
+      }
+    },
+    {
+      "id": "2025-04-05-classic-football-cup",
+      "title": "Турнир по классическому футболу",
+      "date": "2025-04-05",
+      "location": "СПбГУ",
+      "description": "Международные соревнования.",
+      "status": "Скоро",
+      "accent": "green",
+      "links": {
+        "details": "/events/classic-football-cup-2025-04-05",
+        "apply": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "support_donations",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"],
+    "tokens": {
+      "font_primary": "Inter, system-ui, sans-serif",
+      "container": "max-w-7xl mx-auto px-4 md:px-6",
+      "radius_lg": "1rem",
+      "radius_2xl": "1.5rem",
+      "radius_3xl": "2rem",
+      "colors": {
+        "bg_grad_from": "#E4F5F9",
+        "bg_grad_to": "#F1EDF8",
+        "heading": "#2F3A46",
+        "subheading": "rgba(47,58,70,0.70)",
+        "muted": "#6B7785",
+        "card_bg": "#FFFFFF",
+        "card_border": "rgba(99,123,139,0.18)",
+        "card_shadow": "rgba(15,45,52,0.10)",
+        "panel_grad_from": "#6BC4F4",
+        "panel_grad_to": "#B597F6",
+        "chip_bg": "rgba(255,255,255,0.70)",
+        "chip_text": "#2F3A46",
+        "cta_grad_from": "#7BCDC5",
+        "cta_grad_to": "#8DDCDA",
+        "cta_text_dark": "#0F2A2E",
+        "success": "#27AE60",
+        "warning": "#F2994A"
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "donate_png_ref",
+      "type": "image/png",
+      "source_name": "Section-3.png",
+      "hash_sha1": "bfdb5825222c4b4518870e15ef6af49a96c766d4",
+      "role": "visual_reference"
+    }
+  ],
+  "layout": {
+    "class": "relative overflow-hidden py-14 md:py-20 bg-gradient-to-r from-[color:var(--bg-grad-from,#E4F5F9)] to-[color:var(--bg-grad-to,#F1EDF8)]",
+    "children": [
+      { "id": "container", "class": "w-full {{meta.tokens.container}}" },
+      {
+        "id": "header",
+        "class": "text-center max-w-3xl mx-auto",
+        "children": [
+          {
+            "type": "eyebrow",
+            "as": "div",
+            "text": "Финансирование",
+            "class": "inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 text-[13px] text-[color:var(--muted,#6B7785)] shadow-sm"
+          },
+          {
+            "type": "heading",
+            "as": "h2",
+            "text": "Поддержать проект",
+            "class": "mt-2 text-3xl md:text-4xl font-bold tracking-tight text-[color:var(--heading,#2F3A46)]"
+          },
+          {
+            "type": "subheading",
+            "as": "p",
+            "text": "Мы будем признательны за любую помощь и поддержку. Вся наша деятельность направлена на проведение регулярных инклюзивных мероприятий.",
+            "class": "mt-3 text-base md:text-lg text-[color:var(--subheading,rgba(47,58,70,0.70))]"
+          }
+        ]
+      },
+      {
+        "id": "donation_panel",
+        "class": "mt-8 md:mt-10 max-w-3xl mx-auto rounded-3xl border border-[color:var(--card-border,rgba(99,123,139,0.18))] shadow-[0_30px_60px_-24px_var(--tw-shadow-color)] overflow-hidden",
+        "style": { "--tw-shadow-color": "rgba(15,45,52,0.10)" },
+        "children": [
+          {
+            "type": "panel_header",
+            "class": "bg-gradient-to-r from-[color:var(--panel-grad-from,#6BC4F4)] to-[color:var(--panel-grad-to,#B597F6)] px-6 py-4 text-white",
+            "children": [
+              {
+                "type": "title_row",
+                "class": "flex items-center justify-between",
+                "left": {
+                  "as": "div",
+                  "text": "Криптозащищённые платежи",
+                  "class": "text-[15px] font-semibold"
+                },
+                "right": {
+                  "as": "div",
+                  "text": "SSL 256",
+                  "class": "text-[13px] bg-white/20 px-2.5 py-1 rounded-full"
+                }
+              },
+              {
+                "type": "subtitle",
+                "as": "div",
+                "text": "Безопасная система поддержки инклюзивных турниров",
+                "class": "mt-1 text-[13px] opacity-90"
+              }
+            ]
+          },
+          {
+            "type": "panel_body",
+            "class": "bg-white/70 backdrop-blur px-6 py-6"
+          }
+        ]
+      },
+      {
+        "id": "quick_donate",
+        "class": "mt-12 md:mt-16 max-w-3xl mx-auto text-center bg-white/60 rounded-3xl border border-[color:var(--card-border,rgba(99,123,139,0.18))] px-6 py-8"
+      }
+    ]
+  },
+  "content": {
+    "type": "donation",
+    "providers_tabs": {
+      "active": "iomoney",
+      "items": [
+        { "id": "iomoney", "label": "IOMoney", "icon": "lucide:credit-card", "badge": null },
+        { "id": "yandex_donate", "label": "Yandex Donate", "icon": "lucide:shield-check", "badge": { "text": "Надёжно", "tone": "success" } }
+      ],
+      "class": "grid grid-cols-2 gap-2 p-1 rounded-full bg-white/70",
+      "item_class": "inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[15px] font-medium ui-selected:bg-white ui-selected:shadow ui-selected:text-[color:var(--heading,#2F3A46)] ui-not-selected:text-[color:var(--muted,#6B7785)] transition"
+    },
+    "recommended_row": {
+      "label": "Рекомендуемые суммы:",
+      "chips": [
+        { "amount": 500,  "currency": "RUB" },
+        { "amount": 1000, "currency": "RUB" },
+        { "amount": 2500, "currency": "RUB" },
+        { "amount": 5000, "currency": "RUB" }
+      ],
+      "chip_class": "rounded-full bg-[color:var(--chip-bg,rgba(255,255,255,0.70))] px-4 py-2 text-[15px] text-[color:var(--chip-text,#2F3A46)] border border-white/60 hover:bg-white transition"
+    },
+    "custom_amount_input": {
+      "label": "Или введите свою сумму:",
+      "placeholder": "Введите сумму",
+      "suffix": "₽",
+      "min": 100,
+      "max": 500000,
+      "step": 50,
+      "class": "mt-3 w-full rounded-xl border border-[color:var(--card-border,rgba(99,123,139,0.18))] bg-white/80 px-4 py-3 text-[16px] leading-6"
+    },
+    "donate_button": {
+      "label_dynamic": {
+        "iomoney": "Поддержать через IOMoney",
+        "yandex_donate": "Поддержать через Yandex Donate"
+      },
+      "icon_left": "lucide:heart",
+      "class": "mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 bg-gradient-to-r from-[color:var(--cta-grad-from,#7BCDC5)] to-[color:var(--cta-grad-to,#8DDCDA)] text-[color:var(--cta-text-dark,#0F2A2E)] font-medium shadow-sm"
+    },
+    "security_footnote": {
+      "icon": "lucide:lock",
+      "text": "256-битное шифрование SSL/TLS. Все пожертвования идут на организацию инклюзивных турниров и развитие проекта «Мир уникальных геймеров».",
+      "class": "mt-3 text-[13px] text-[color:var(--muted,#6B7785)]"
+    },
+    "quick_donate": {
+      "title": "Быстрый донат",
+      "subtitle": "Отсканируйте QR‑код для мгновенного пожертвования",
+      "qr": {
+        "data": "https://t.me/wugamers?start=donate",
+        "render": "svg",
+        "size_px": 128
+      },
+      "mobile_button": {
+        "label": "Мобильная версия",
+        "href": "/donate/mobile",
+        "class": "mt-4 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 border border-[color:var(--card-border,rgba(99,123,139,0.18))] bg-white/70 text-[15px]"
+      }
+    },
+    "bindings": {
+      "project_manifest": "ano-unikalnyy-mir.manifest.json",
+      "payment_endpoints": {
+        "iomoney": { "kind": "redirect", "href": "/api/payments/iomoney/create?amount={amount_rub}" },
+        "yandex_donate": { "kind": "redirect", "href": "/api/payments/yandex-donate/create?amount={amount_rub}" }
+      }
+    }
+  },
+  "behavior": {
+    "locale": "ru-RU",
+    "currency": "RUB",
+    "rules": [
+      "Клик по чипу → подставить сумму в поле и снять ошибку",
+      "Валидировать min/max и кратность step",
+      "Кнопка Donate активна только при валидной сумме",
+      "Смена вкладки провайдера → обновить текст кнопки и endpoint",
+      "Отправка → редирект на провайдера; не хранить платёжные данные на клиенте"
+    ],
+    "validation_messages": {
+      "too_small": "Минимальная сумма — 100 ₽",
+      "too_big": "Слишком большая сумма",
+      "not_step": "Сумма должна быть кратна 50 ₽",
+      "required": "Введите сумму или выберите из предложенных"
+    },
+    "animations": [
+      "panel:hover → translate-y-[2px]",
+      "donate_button:hover → opacity-95"
+    ],
+    "security": {
+      "no_pii_storage": true,
+      "transport": "TLS1.2+",
+      "content_security_policy_hint": "frame-ancestors 'none'; base-uri 'self'; connect-src 'self' https://*.yoomoney.ru https://*.yandex.ru"
+    }
+  },
+  "accessibility": {
+    "landmark": "section",
+    "aria_labels": {
+      "section": "Поддержать проект",
+      "providers": "Выбор платёжного провайдера",
+      "amount_input": "Сумма пожертвования в рублях",
+      "submit": "Отправить пожертвование"
+    },
+    "roles": {
+      "chips_group": "radiogroup",
+      "chip": "radio"
+    },
+    "aria_live": {
+      "total": "polite"
+    },
+    "keyboard": {
+      "focus_ring": "ring-2 ring-offset-2 ring-[rgba(123,205,197,0.60)] rounded-xl"
+    }
+  },
+  "responsiveness": [
+    { "bp": "sm", "rules": ["panel_body:px-4 py-5", "chips:grid grid-cols-2 gap-2", "quick_donate:stacked"] },
+    { "bp": "md", "rules": ["chips:flex gap-3"] }
+  ],
+  "component_mapping": {
+    "tabs":    { "library": "shadcn", "component": "Tabs" },
+    "card":    { "library": "shadcn", "component": "Card" },
+    "input":   { "library": "shadcn", "component": "Input" },
+    "button":  { "library": "shadcn", "component": "Button" },
+    "badge":   { "library": "shadcn", "component": "Badge" },
+    "qr_code": { "library": "custom", "component": "QrSvg" }
+  },
+  "quality_gates": [
+    { "type": "screenshot_diff", "reference_asset": "donate_png_ref", "threshold": 0.98 },
+    { "type": "a11y", "level": "AA" }
+  ],
+  "mcp_preferences": {
+    "use": ["context7","sequential-thinking"],
+    "context7": { "libraries": ["/tailwindcss/tailwindcss","/radix-ui/react"] },
+    "sequential-thinking": { "plan": ["шапка секции","панель доната","вкладки провайдеров","валидация суммы","QR блок","a11y","пиксель‑сверка"] }
+  },
+  "output": {
+    "format": "file_tree",
+    "files": ["components/donate-section.tsx","styles/globals.css","pages/api/payments/iomoney/create.ts","pages/api/payments/yandex-donate/create.ts"]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "hero_header",
+    "target_stack": "html_tailwind",
+    "breakpoints": ["sm","md","lg","xl"],
+    "tokens": {
+      "font_primary": "Inter, system-ui, sans-serif",
+      "container": "max-w-7xl mx-auto px-4 md:px-6",
+      "radius": "1rem",
+      "colors": {
+        "bg_grad_from": "#E4F5F9",
+        "bg_grad_to": "#EBEEF7",
+        "headline_primary": "#5BA8A8",
+        "headline_accent": "#43B7B4",
+        "text_muted": "#7A8895",
+        "kpi_label": "#5E6A75",
+        "kpi_value": "#2F3A46",
+        "cta_grad_from": "#7BCDC5",
+        "cta_grad_to": "#8DDCDA",
+        "cta_secondary_bg": "#FFFFFF",
+        "cta_secondary_border": "rgba(99,123,139,0.25)"
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "hero_png_ref",
+      "type": "image/png",
+      "source_name": "Header.png",
+      "hash_sha1": "954d038a116437fd14ee13a205ef20dbddd36169",
+      "role": "visual_reference"
+    }
+  ],
+  "layout": {
+    "display": "grid",
+    "grid_template": { "base_cols": 1, "lg_cols": 12 },
+    "areas": [
+      { "id": "copy",  "col_base": "1/1", "col_lg": "1/7",  "row": "1" },
+      { "id": "media", "col_base": "1/1", "col_lg": "7/13", "row": "1" }
+    ],
+    "class": "relative overflow-hidden bg-gradient-to-r from-[#E4F5F9] to-[#EBEEF7] py-10 md:py-16 lg:py-24"
+  },
+  "content": {
+    "type": "hero",
+    "headline": [
+      { "text": "Развитие специального", "as": "h1", "class": "text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[color:var(--headline-primary,#5BA8A8)] uppercase" },
+      { "text": "кибердвижения и фиджитал-спорта", "as": "h1", "class": "mt-2 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-[color:var(--headline-accent,#43B7B4)] uppercase" }
+    ],
+    "subhead_blocks": [
+      { "text": "Для людей с НЕограниченными возможностями", "as": "p", "class": "mt-6 text-xl md:text-2xl font-semibold tracking-tight text-[color:var(--headline-accent,#43B7B4)] uppercase" },
+      { "text": "Мы создаём инклюзивную киберспортивную платформу для детей, подростков и молодёжи с ограниченными возможностями.", "as": "p", "class": "mt-4 text-base md:text-lg leading-7 text-[color:var(--text-muted,#7A8895)] max-w-prose" }
+    ],
+    "kpis": [
+      { "value": "7+",    "label": "лет",          "class": "text-3xl font-semibold text-[color:var(--kpi_value,#2F3A46)]" },
+      { "value": "30+",   "label": "мероприятий",  "class": "text-3xl font-semibold text-[color:var(--kpi_value,#2F3A46)]" },
+      { "value": "10K+",  "label": "участников",   "class": "text-3xl font-semibold text-[color:var(--kpi_value,#2F3A46)]" },
+      { "value": "15",    "label": "стран",        "class": "text-3xl font-semibold text-[color:var(--kpi_value,#2F3A46)]" }
+    ],
+    "ctas": [
+      { "text": "Присоединиться", "action": "open_telegram_bot", "href": "https://t.me/wugamers", "priority": "primary", "class": "mt-6 inline-flex items-center gap-2 rounded-full px-5 py-3 bg-gradient-to-r from-[#7BCDC5] to-[#8DDCDA] text-[color:var(--cta_text,#0F2A2E)] shadow-sm" },
+      { "text": "Узнать больше", "action": "anchor_to", "href": "#about", "priority": "secondary", "class": "mt-6 inline-flex items-center gap-2 rounded-full px-5 py-3 bg-[color:var(--cta-secondary-bg,#FFFFFF)] border border-[color:var(--cta-secondary-border,rgba(99,123,139,0.25))] text-[color:var(--kpi_value,#2F3A46)]" }
+    ],
+    "media": {
+      "image_ref": "hero_png_ref",
+      "object_fit": "contain",
+      "focal_point": "right-center",
+      "notes": "3D‑персонаж справа; не обрезать при xl; на sm — под заголовками"
+    },
+    "bindings": {
+      "project_manifest": "ano-unikalnyy-mir.manifest.json",
+      "respect_sections_order": true
+    }
+  },
+  "accessibility": {
+    "landmark": "main",
+    "aria_labels": { "primary_cta": "Открыть Telegram для участия" }
+  },
+  "responsiveness": [
+    { "bp": "sm", "rules": ["stacked", "text-center", "media:order-last", "kpis:grid-cols-2 gap-x-10 gap-y-6"] },
+    { "bp": "lg", "rules": ["two_columns", "text-left", "kpis:flex gap-10 items-end"] }
+  ],
+  "quality_gates": [
+    { "type": "a11y", "level": "AA" },
+    { "type": "visual_review", "notes": "Сверить цвета фона (#E4F5F9→#EBEEF7), оттенки заголовков (#5BA8A8 / #43B7B4), расположение KPI и CTA" }
+  ],
+  "mcp_preferences": {
+    "use": ["context7","sequential-thinking"],
+    "context7": { "libraries": ["/tailwindcss/tailwindcss"] },
+    "sequential-thinking": { "plan": ["сетка","типографика","адаптив","a11y","пиксель‑сверка"] }
+  },
+  "output": {
+    "format": "file_tree",
+    "files": ["index.html","styles/tailwind.css"]
+  }
+}

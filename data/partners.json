@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "ordering": ["госструктуры","ФКС России","Федерация гонок дронов России","СМИ","партнёры","НКО"],
+    "exclude": ["GEOSCAN", "Street Media Group"],
+    "featured_first": true
+  },
+  "items": [
+    {
+      "id": "va-pc",
+      "display_name": "VA PC",
+      "category": "партнёры",
+      "priority": 120,
+      "featured": true,
+      "logo": "/assets/partners/va-pc-logo_300x300.png",
+      "href": null,
+      "alt": "VA PC — логотип",
+      "approved": true
+    },
+    {
+      "id": "va-studio",
+      "display_name": "VA Studio",
+      "category": "партнёры",
+      "priority": 120,
+      "featured": true,
+      "logo": "/assets/partners/va-studio_300x300.png",
+      "href": null,
+      "alt": "VA Studio — логотип",
+      "approved": true
+    },
+
+    {
+      "id": "pravitelstvo-moskvy",
+      "display_name": "Правительство Москвы",
+      "category": "госструктуры",
+      "priority": 110,
+      "featured": true,
+      "logo": "/assets/partners/PM_300x300.png",
+      "href": null,
+      "alt": "Правительство Москвы — логотип",
+      "approved": true
+    },
+    {
+      "id": "fks-rossii",
+      "display_name": "Федерация компьютерного спорта России",
+      "category": "ФКС России",
+      "priority": 105,
+      "featured": true,
+      "logo": "/assets/partners/ФКС_300x300.png",
+      "href": null,
+      "alt": "ФКС России — логотип",
+      "approved": true
+    },
+    {
+      "id": "federatsiya-gonok-dronov-rossii",
+      "display_name": "Федерация гонок дронов России",
+      "category": "Федерация гонок дронов России",
+      "priority": 100,
+      "featured": true,
+      "logo": "/assets/partners/DroneSports_300x300.png",
+      "href": null,
+      "alt": "Федерация гонок дронов России — логотип",
+      "approved": true
+    },
+
+    {
+      "id": "moya-karera",
+      "display_name": "Моя карьера (Москва)",
+      "category": "госструктуры",
+      "priority": 95,
+      "logo": "/assets/partners/Моя_карьера_300x300.png",
+      "href": null,
+      "alt": "Моя карьера — логотип",
+      "approved": true
+    },
+    {
+      "id": "patriot-sport",
+      "display_name": "Патриот Спорт",
+      "category": "госструктуры",
+      "priority": 90,
+      "logo": "/assets/partners/Patriot-sport.png",
+      "href": null,
+      "alt": "Патриот Спорт — логотип",
+      "approved": true
+    },
+
+    {
+      "id": "kaspersky",
+      "display_name": "Kaspersky",
+      "category": "партнёры",
+      "priority": 70,
+      "logo": "/assets/partners/Kaspersy_300x300.png",
+      "href": null,
+      "alt": "Kaspersky — логотип",
+      "approved": true
+    },
+    {
+      "id": "positive-technologies",
+      "display_name": "Positive Technologies",
+      "category": "партнёры",
+      "priority": 70,
+      "logo": "/assets/partners/Positiv_new_LOGO.png",
+      "href": null,
+      "alt": "Positive Technologies — логотип",
+      "approved": true
+    },
+    {
+      "id": "dla",
+      "display_name": "DLA",
+      "category": "партнёры",
+      "priority": 60,
+      "logo": "/assets/partners/DLA_300x300.png",
+      "href": null,
+      "alt": "DLA — логотип",
+      "approved": true
+    },
+    {
+      "id": "marpik-gorizont",
+      "display_name": "Марпик — Горизонт",
+      "category": "партнёры",
+      "priority": 60,
+      "logo": "/assets/partners/Марпик-горизонт.png",
+      "href": null,
+      "alt": "Марпик — Горизонт — логотип",
+      "approved": true
+    },
+
+    {
+      "id": "rddi",
+      "display_name": "РДИ",
+      "category": "НКО",
+      "priority": 50,
+      "logo": "/assets/partners/РДИ_300x300.png",
+      "href": null,
+      "alt": "РДИ — логотип",
+      "approved": true
+    },
+    {
+      "id": "rsbi",
+      "display_name": "Российский Союз Боевых Искусств (РСБИ)",
+      "category": "НКО",
+      "priority": 50,
+      "logo": "/assets/partners/РСБИ_300x300.png",
+      "href": null,
+      "alt": "РСБИ — логотип",
+      "approved": true
+    },
+    {
+      "id": "fond-sodeistviya-nauke",
+      "display_name": "Фонд содействия науки",
+      "category": "НКО",
+      "priority": 50,
+      "logo": "/assets/partners/Фонд-содействия-науки-1.png",
+      "href": null,
+      "alt": "Фонд содействия науки — логотип",
+      "approved": true
+    },
+    {
+      "id": "mir-i-lyubov",
+      "display_name": "Мир и Любовь",
+      "category": "НКО",
+      "priority": 50,
+      "logo": "/assets/partners/Мир-и-Любовь.png",
+      "href": null,
+      "alt": "Мир и Любовь — логотип",
+      "approved": true
+    },
+    {
+      "id": "miru-mir",
+      "display_name": "Миру Мир",
+      "category": "НКО",
+      "priority": 50,
+      "logo": "/assets/partners/Miru_Mir_300x300.png",
+      "href": null,
+      "alt": "Миру Мир — логотип",
+      "approved": true
+    },
+
+    {
+      "id": "vietnam-media",
+      "display_name": "Vietnam (СМИ)",
+      "category": "СМИ",
+      "priority": 40,
+      "logo": "/assets/partners/Vietnam_300x300.png",
+      "href": null,
+      "alt": "Vietnam — логотип",
+      "approved": true
+    }
+  ]
+}

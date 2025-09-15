@@ -1,0 +1,266 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "team_carousel_one_row",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"],
+    "tokens": {
+      "font_primary": "Inter, system-ui, sans-serif",
+      "container": "max-w-7xl mx-auto px-4 md:px-6",
+      "radius_card": "1rem",
+      "radius_full": "9999px",
+      "colors": {
+        "bg_grad_from": "#E4F5F9",
+        "bg_grad_to": "#F1EDF8",
+        "heading": "#2F3A46",
+        "subheading": "rgba(47,58,70,0.70)",
+        "muted": "#6B7785",
+        "card_bg": "#FFFFFF",
+        "card_border": "rgba(99,123,139,0.16)",
+        "card_shadow": "rgba(15,45,52,0.08)",
+        "chip_bg": "rgba(123,205,197,0.12)",
+        "chip_text": "#5BA8A8"
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "team_png_ref",
+      "type": "image/png",
+      "source_name": "Section-4.png",
+      "role": "visual_reference"
+    }
+  ],
+  "layout": {
+    "class": "relative overflow-hidden py-14 md:py-20 bg-gradient-to-r from-[color:var(--bg-grad-from,#E4F5F9)] to-[color:var(--bg-grad-to,#F1EDF8)]",
+    "children": [
+      { "id": "container", "class": "w-full {{meta.tokens.container}}" },
+      {
+        "id": "header",
+        "class": "text-center max-w-3xl mx-auto",
+        "children": [
+          { "type": "heading", "as": "h2", "text": "Команда", "class": "text-3xl md:text-4xl font-bold tracking-tight text-[color:var(--heading,#2F3A46)]" },
+          { "type": "subheading", "as": "p", "text": "Профессиональная команда экспертов, объединённых общей миссией создания инклюзивного киберспорта", "class": "mt-3 text-base md:text-lg text-[color:var(--subheading,rgba(47,58,70,0.70))]" }
+        ]
+      },
+      {
+        "id": "carousel_shell",
+        "class": "mt-10 md:mt-12 relative",
+        "children": [
+          {
+            "type": "fade_edges",
+            "class": "pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[rgba(228,245,249,1)] to-transparent"
+          },
+          {
+            "type": "fade_edges",
+            "class": "pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[rgba(241,237,248,1)] to-transparent"
+          },
+          {
+            "type": "track",
+            "id": "track",
+            "class": "relative snap-x snap-mandatory overflow-x-auto overflow-y-visible no-scrollbar scroll-smooth -mx-4 px-4",
+            "style": { "scrollbarWidth": "none" },
+            "children": [
+              { "type": "items_row", "class": "flex gap-5 md:gap-6 items-stretch" }
+            ]
+          },
+          {
+            "type": "nav_buttons",
+            "class": "hidden md:flex absolute inset-y-1/2 -translate-y-1/2 left-2 right-2 justify-between",
+            "prev": { "id": "btnPrev", "class": "inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow border border-[rgba(99,123,139,0.18)]", "icon": "lucide:chevron-left", "aria_label": "Предыдущие участники" },
+            "next": { "id": "btnNext", "class": "inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 shadow border border-[rgba(99,123,139,0.18)]", "icon": "lucide:chevron-right", "aria_label": "Следующие участники" }
+          }
+        ]
+      }
+    ]
+  },
+  "content": {
+    "type": "team",
+    "card_component": {
+      "class": "group snap-start shrink-0 w-[260px] md:w-[320px] lg:w-[360px] bg-[color:var(--card-bg,#FFFFFF)] rounded-[var(--radius-card,1rem)] border border-[color:var(--card-border,rgba(99,123,139,0.16))] shadow-[0_14px_28px_-16px_var(--tw-shadow-color)] overflow-hidden",
+      "style": { "--tw-shadow-color": "rgba(15,45,52,0.08)" },
+      "parts": {
+        "photo_wrap": "relative aspect-[3/4] bg-[rgba(99,123,139,0.06)] overflow-hidden",
+        "photo": "absolute inset-0 w-full h-full object-cover object-[center_20%]",
+        "body": "p-4 md:p-5",
+        "name": "text-[17px] md:text-lg font-semibold text-[color:var(--heading,#2F3A46)]",
+        "role_chip": "mt-2 inline-flex items-center gap-2 text-[13px] px-3 py-1 rounded-full bg-[color:var(--chip_bg,rgba(123,205,197,0.12))] text-[color:var(--chip_text,#5BA8A8)]",
+        "desc": "mt-2 text-[15px] leading-6 text-[color:var(--muted,#6B7785)]"
+      }
+    },
+    "image_policy": {
+      "expected_ratio": "3:4",
+      "min_resolution": "960x1280",
+      "face_position": "center 20%",
+      "folder": "/assets/team/",
+      "filenames_pattern": "lastname-firstname.jpg",
+      "placeholder": "/assets/team/_placeholder.jpg",
+      "blur_preview": true
+    },
+    "members_order_policy": "strict_match_manifest",
+    "members": [
+      {
+        "id": "zhorova-sofiya-igorievna",
+        "name": "Жорова София Игоревна",
+        "role": "Президент АНО «Уникальный мир»",
+        "badge": "Президент АНО «Уникальный мир»",
+        "description": "Координирует международные проекты и взаимодействие с государственными структурами.",
+        "photo": { "src": "/assets/team/zhorova-sofiya.jpg", "alt": "Жорова София Игоревна" }
+      },
+      {
+        "id": "nechaev-nikolay-ivanovich",
+        "name": "Нечаев Николай Иванович",
+        "role": "Основатель проекта, вице‑президент",
+        "badge": "Основатель проекта, вице‑президент",
+        "description": "Идеолог инклюзивного киберспорта, автор концепции социального проекта.",
+        "photo": { "src": "/assets/team/nechaev-nikolay.jpg", "alt": "Нечаев Николай Иванович" }
+      },
+      {
+        "id": "kutyreva-ekaterina-nikolaevna",
+        "name": "Кутырева Екатерина Николаевна",
+        "role": "Советник по стратегическому развитию",
+        "badge": "Советник по стратегическому развитию",
+        "description": "Эксперт по стратегическому планированию и развитию социальных проектов.",
+        "photo": { "src": "/assets/team/kutyreva-ekaterina.jpg", "alt": "Кутырева Екатерина Николаевна" }
+      },
+      {
+        "id": "dmitriy-vladimirovich-stepanovich",
+        "name": "Дмитрий Владимирович Степанович",
+        "role": "Международные коммуникации",
+        "badge": "Международные коммуникации",
+        "description": "Отвечает за развитие международного сотрудничества и коммуникацию с партнёрами.",
+        "photo": { "src": "/assets/team/stepanovich-dmitriy.jpg", "alt": "Дмитрий Владимирович Степанович" }
+      },
+      {
+        "id": "melnik-anatoliy-vladimirovich",
+        "name": "Мельник Анатолий Владимирович",
+        "role": "Техническая поддержка",
+        "badge": "Техническая поддержка",
+        "description": "Руководит техническим обеспечением турниров и IT‑инфраструктурой проекта.",
+        "photo": { "src": "/assets/team/melnik-anatoliy.jpg", "alt": "Мельник Анатолий Владимирович" }
+      },
+      {
+        "id": "safronov-andrey-aleksandrovich",
+        "name": "Сафронов Андрей Александрович",
+        "role": "Медиакоммуникации",
+        "badge": "Медиакоммуникации",
+        "description": "Координирует медиа‑активности проекта и информационное сопровождение мероприятий.",
+        "photo": { "src": "/assets/team/safronov-andrey.jpg", "alt": "Сафронов Андрей Александрович" }
+      },
+      {
+        "id": "anisimov-anton-alekseevich",
+        "name": "Анисимов Антон Алексеевич",
+        "role": "Главный эксперт по СМИ и современным медиа",
+        "badge": "Эксперт по СМИ",
+        "description": "Развивает присутствие в современных медиа и формирует редакционную политику.",
+        "photo": { "src": "/assets/team/anisimov-anton.jpg", "alt": "Анисимов Антон Алексеевич" }
+      },
+      {
+        "id": "kok-elizaveta-nikolaevna",
+        "name": "Кок Елизавета Николаевна",
+        "role": "Реклама и бренд‑менеджмент",
+        "badge": "Реклама и бренд‑менеджмент",
+        "description": "Отвечает за брендинг и рекламные кампании проекта.",
+        "photo": { "src": "/assets/team/kok-elizaveta.jpg", "alt": "Кок Елизавета Николаевна" }
+      },
+      {
+        "id": "isaev-evgeniy-vyacheslavovich",
+        "name": "Исаев Евгений Вячеславович",
+        "role": "Представитель АНО в УрФО по PR и GR",
+        "badge": "PR/GR (УрФО)",
+        "description": "Коммуникации с региональными органами власти и партнёрами в УрФО.",
+        "photo": { "src": "/assets/team/isaev-evgeniy.jpg", "alt": "Исаев Евгений Вячеславович" }
+      },
+      {
+        "id": "meshochkin-andrey-vladimirovich",
+        "name": "Мешочкин Андрей Владимирович",
+        "role": "Представитель АНО в УрФО по связям с общественностью",
+        "badge": "Связи с общественностью (УрФО)",
+        "description": "Взаимодействие со СМИ и общественными организациями региона.",
+        "photo": { "src": "/assets/team/meshochkin-andrey.jpg", "alt": "Мешочкин Андрей Владимирович" }
+      }
+    ],
+    "bindings": {
+      "project_manifest": "ano-unikalnyy-mir.manifest.json",
+      "must_follow_order_from_manifest": true,
+      "exclude_names": ["Журков"]
+    }
+  },
+  "behavior": {
+    "carousel": {
+      "one_row": true,
+      "snap": "center",
+      "drag_scroll": true,
+      "wheel_drag": true,
+      "loop": "virtual_clones",
+      "nearest_snap_on_resize": true,
+      "auto_advance": { "enabled": false, "interval_ms": 5000, "pause_on_hover": true, "respect_reduced_motion": true },
+      "controls": {
+        "prev_selector": "#btnPrev",
+        "next_selector": "#btnNext",
+        "on_click": "scrollByCardWidth",
+        "card_width_selector": ".group",
+        "scroll_margin": 16
+      }
+    },
+    "images": {
+      "loading": "lazy",
+      "decoding": "async",
+      "fetchpriority_first_cards": "high",
+      "sizes_attr": "(min-width: 1024px) 360px, (min-width: 768px) 320px, 260px"
+    },
+    "algorithms": [
+      "scrollByCardWidth: вычислить целевую позицию как ближайший snap‑offset к текущему +/‑ ширина_карточки + gap",
+      "virtual_clones: добавить к началу и концу трека по 2 клон‑карточки; при достижении клонов — перескроллить на эквивалентный оригинал без анимации"
+    ]
+  },
+  "accessibility": {
+    "landmark": "section",
+    "aria_labels": {
+      "section": "Команда проекта — карусель",
+      "carousel": "Слайдер команды, прокрутка по горизонтали",
+      "prev": "Предыдущие участники",
+      "next": "Следующие участники"
+    },
+    "roles": {
+      "track": "list",
+      "card": "listitem"
+    },
+    "keyboard": {
+      "arrow_nav": true,
+      "focus_ring": "ring-2 ring-offset-2 ring-[rgba(123,205,197,0.60)] rounded-[12px]"
+    }
+  },
+  "responsiveness": [
+    { "bp": "sm", "rules": ["card:w-[260px]"] },
+    { "bp": "md", "rules": ["card:w-[320px]"] },
+    { "bp": "lg", "rules": ["card:w-[360px]"] }
+  ],
+  "component_mapping": {
+    "button": { "library": "shadcn", "component": "Button" },
+    "scroll_area": { "library": "shadcn", "component": "ScrollArea" },
+    "card": { "library": "shadcn", "component": "Card" }
+  },
+  "constraints": {
+    "team": {
+      "order_must_match_manifest": true,
+      "exclude": ["Журков"],
+      "note_from_spec": "Порядок членов команды и исключение Журкова заданы в ТЗ (стр. 4–5)."
+    }
+  },
+  "quality_gates": [
+    { "type": "a11y", "level": "AA" },
+    { "type": "visual_review", "notes": "Проверить однотипность высоты карточек, мягкие тени, скругления и цветовые токены." }
+  ],
+  "mcp_preferences": {
+    "use": ["context7","sequential-thinking"],
+    "context7": { "libraries": ["/tailwindcss/tailwindcss","/radix-ui/react"] },
+    "sequential-thinking": { "plan": ["однострочная карусель","перетаскивание и стрелки","замена фото по политике","a11y","адаптив","визуальная верификация"] }
+  },
+  "output": {
+    "format": "file_tree",
+    "files": ["components/team-carousel.tsx","assets/team/_placeholder.jpg","styles/globals.css","data/team.json"]
+  }
+}

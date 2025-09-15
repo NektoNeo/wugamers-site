@@ -1,0 +1,212 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "about_goal_mission",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"],
+    "tokens": {
+      "font_primary": "Inter, system-ui, sans-serif",
+      "container": "max-w-7xl mx-auto px-4 md:px-6",
+      "radius_lg": "1rem",
+      "radius_xl": "1.5rem",
+      "radius_2xl": "2rem",
+      "colors": {
+        "bg_grad_from": "#E4F5F9",
+        "bg_grad_to": "#EBEEF7",
+        "heading": "#2F3A46",
+        "subheading": "rgba(47,58,70,0.70)",
+        "muted": "#6B7785",
+        "card_border": "rgba(99,123,139,0.20)",
+        "card_shadow": "rgba(15,45,52,0.08)",
+        "accent_aqua": "#7BCDC5",
+        "accent_purple": "#B597F6",
+        "accent_peach": "#F6C9C4",
+        "cta_text_dark": "#0F2A2E"
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "about_png_ref",
+      "type": "image/png",
+      "source_name": "Section-1.png",
+      "role": "visual_reference"
+    }
+  ],
+  "layout": {
+    "class": "relative overflow-hidden py-14 md:py-20 bg-gradient-to-r from-[color:var(--bg-grad-from,#E4F5F9)] to-[color:var(--bg-grad-to,#EBEEF7)]",
+    "children": [
+      { "id": "container", "class": "w-full {{meta.tokens.container}}" },
+      {
+        "id": "header",
+        "class": "text-center max-w-3xl mx-auto",
+        "children": [
+          {
+            "type": "heading",
+            "as": "h2",
+            "text": "О проекте",
+            "class": "text-3xl md:text-4xl font-bold tracking-tight text-[color:var(--heading,#2F3A46)]"
+          },
+          {
+            "type": "lede",
+            "as": "p",
+            "text": "Уникальный мир — специальный инклюзивный проект по киберспорту и кибербезопасности для детей, подростков и молодёжи с ограниченными возможностями.",
+            "class": "mt-3 text-base md:text-lg text-[color:var(--subheading,rgba(47,58,70,0.70))]"
+          }
+        ]
+      },
+      {
+        "id": "goals",
+        "class": "mt-10 md:mt-14",
+        "children": [
+          {
+            "type": "subheading",
+            "as": "h3",
+            "text": "Наши цели",
+            "class": "text-center text-xl md:text-2xl font-semibold text-[color:var(--heading,#2F3A46)] mb-6 md:mb-8"
+          },
+          {
+            "type": "grid",
+            "class": "grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+          }
+        ]
+      },
+      {
+        "id": "links_row",
+        "class": "mt-8 md:mt-10 flex flex-wrap items-center justify-center gap-3 md:gap-4"
+      },
+      {
+        "id": "mission_panel",
+        "class": "mt-10 md:mt-14 bg-white rounded-3xl p-6 md:p-8 border border-[color:var(--card-border,rgba(99,123,139,0.20))] shadow-[0_18px_36px_-16px_var(--tw-shadow-color)]",
+        "style": { "--tw-shadow-color": "rgba(15,45,52,0.08)" }
+      }
+    ]
+  },
+  "content": {
+    "type": "about",
+    "goals_cards": [
+      {
+        "accent": "aqua",
+        "icon": "lucide:target",
+        "title": "Развитие и пропаганда специального кибердвижения в России",
+        "text": "Создание платформы для популяризации инклюзивного киберспорта"
+      },
+      {
+        "accent": "purple",
+        "icon": "lucide:users-round",
+        "title": "Привлечение новых участников из числа особенных детей",
+        "text": "Вовлечение детей и подростков с ограниченными возможностями"
+      },
+      {
+        "accent": "peach",
+        "icon": "lucide:shield-heart",
+        "title": "Привлечение внимания государства и общества к проблемам людей с инвалидностью",
+        "text": "Повышение осведомлённости о потребностях и возможностях особенных людей"
+      }
+    ],
+    "goal_card_component": {
+      "class": "bg-white rounded-2xl p-6 md:p-7 border shadow-[0_10px_24px_-12px_var(--tw-shadow-color)] transition-all hover:shadow-[0_18px_38px_-16px_var(--tw-shadow-color)]",
+      "style": { "--tw-shadow-color": "rgba(15,45,52,0.08)" },
+      "parts": {
+        "icon": "inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[rgba(123,205,197,0.12)] text-[color:var(--accent-aqua,#7BCDC5)]",
+        "title": "mt-4 text-[17px] md:text-lg font-semibold leading-snug text-[color:var(--heading,#2F3A46)]",
+        "text": "mt-2 text-[15px] leading-6 text-[color:var(--muted,#6B7785)]"
+      },
+      "accent_map": {
+        "aqua":   { "border": "border-[color:var(--accent-aqua,#7BCDC5)]/40"   },
+        "purple": { "border": "border-[color:var(--accent-purple,#B597F6)]/40", "parts.icon": "bg-[rgba(181,151,246,0.12)] text-[#B597F6]" },
+        "peach":  { "border": "border-[color:var(--accent-peach,#F6C9C4)]/50",  "parts.icon": "bg-[rgba(246,201,196,0.14)] text-[#F6C9C4]" }
+      }
+    },
+    "links": [
+      {
+        "id": "promo_video",
+        "label": "Проморолик",
+        "href": null,
+        "binding": "manifest.content_sources.carry_over.promo_video",
+        "class": "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium text-white bg-gradient-to-r from-[#FF7D92] to-[#FFA6B0]",
+        "icon_left": "lucide:play-circle"
+      },
+      {
+        "id": "project_presentation",
+        "label": "Презентация",
+        "href": null,
+        "binding": "manifest.content_sources.carry_over.project_presentation",
+        "class": "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium text-white bg-gradient-to-r from-[#A88CF5] to-[#B597F6]",
+        "icon_left": "lucide:users"
+      },
+      {
+        "id": "anthem",
+        "label": "Гимн",
+        "href": null,
+        "binding": "manifest.content_sources.carry_over.anthem",
+        "class": "inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-medium text-[color:var(--cta_text_dark,#0F2A2E)] bg-gradient-to-r from-[#7BCDC5] to-[#8DDCDA]",
+        "icon_left": "lucide:music-2"
+      }
+    ],
+    "mission": {
+      "icon": "lucide:heart",
+      "title": "Наша миссия",
+      "intro": "Киберспорт — не просто игры, это дисциплина и путь к самореализации. Мы даём возможность соревноваться на равных, находить единомышленников и выходить на большие сцены.",
+      "list_title": "Мы предоставляем:",
+      "bullets": [
+        "Регулярные турниры по различным дисциплинам",
+        "Поддержка активного и дружелюбного сообщества",
+        "Шанс попасть в топ-лиги и участвовать в крупных соревнованиях",
+        "Образовательные мастер‑классы и тренировки",
+        "Доступ к адаптивным технологиям и оборудованию"
+      ],
+      "cta_optional": {
+        "display": false,
+        "label": "Комьюнити единомышленников",
+        "action": "open_telegram_chat",
+        "href": "https://t.me/wugamers"
+      }
+    },
+    "bindings": {
+      "project_manifest": "ano-unikalnyy-mir.manifest.json",
+      "respect_sections_order": true
+    }
+  },
+  "behavior": {
+    "animations": [
+      "goal-card:hover → translate-y-[2px]",
+      "link:hover → opacity-95"
+    ]
+  },
+  "accessibility": {
+    "landmark": "section",
+    "aria_labels": {
+      "section": "О проекте: цели, ссылки и миссия",
+      "links_row": "Внешние ссылки: проморолик, презентация, гимн"
+    },
+    "roles": {
+      "goals_grid": "list",
+      "goal_card": "listitem"
+    }
+  },
+  "responsiveness": [
+    { "bp": "sm", "rules": ["goals:grid-cols-1", "mission_panel:p-6"] },
+    { "bp": "md", "rules": ["goals:grid-cols-3"] }
+  ],
+  "component_mapping": {
+    "card":   { "library": "shadcn", "component": "Card" },
+    "button": { "library": "shadcn", "component": "Button" },
+    "badge":  { "library": "shadcn", "component": "Badge" }
+  },
+  "quality_gates": [
+    { "type": "screenshot_diff", "reference_asset": "about_png_ref", "threshold": 0.98 },
+    { "type": "a11y", "level": "AA" }
+  ],
+  "mcp_preferences": {
+    "use": ["context7","sequential-thinking"],
+    "context7": { "libraries": ["/tailwindcss/tailwindcss","/radix-ui/react"] },
+    "sequential-thinking": { "plan": ["сетка","карточки целей","ряд ссылок","панель миссии","адаптив","a11y","пиксель‑сверка"] }
+  },
+  "output": {
+    "format": "file_tree",
+    "files": ["components/about-section.tsx","styles/globals.css"]
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "roadmap_timeline",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"],
+    "tokens": {
+      "font_primary": "Inter, system-ui, sans-serif",
+      "container": "max-w-7xl mx-auto px-4 md:px-6",
+      "radius_lg": "1rem",
+      "radius_2xl": "1.25rem",
+      "colors": {
+        "bg_grad_from": "#E4F5F9",
+        "bg_grad_to": "#F1EDF8",
+        "heading": "#2F3A46",
+        "subheading": "rgba(47,58,70,0.70)",
+        "card_bg": "#FFFFFF",
+        "card_border": "rgba(99,123,139,0.20)",
+        "card_shadow": "rgba(15,45,52,0.08)",
+        "muted": "#6B7785",
+        "accent_aqua": "#7BCDC5",
+        "accent_purple": "#B597F6",
+        "accent_green": "#9BE5C7",
+        "accent_peach": "#F6C9C4"
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "roadmap_png_ref",
+      "type": "image/jpeg",
+      "source_name": "Section-2.jpeg",
+      "role": "visual_reference"
+    }
+  ],
+  "layout": {
+    "class": "relative overflow-hidden py-14 md:py-20 bg-gradient-to-r from-[color:var(--bg-grad-from,#E4F5F9)] to-[color:var(--bg-grad-to,#F1EDF8)]",
+    "children": [
+      { "id": "container", "class": "w-full {{meta.tokens.container}}" },
+      {
+        "id": "header",
+        "class": "text-center max-w-3xl mx-auto",
+        "children": [
+          {
+            "type": "eyebrow",
+            "as": "div",
+            "text": "",
+            "class": "inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 text-[13px] text-[color:var(--muted,#6B7785)] shadow-sm"
+          },
+          {
+            "type": "heading",
+            "as": "h2",
+            "text": "Дорожная карта проекта",
+            "class": "mt-2 text-3xl md:text-4xl font-bold tracking-tight text-[color:var(--heading,#2F3A46)]"
+          },
+          {
+            "type": "subheading",
+            "as": "p",
+            "text": "Ключевые достижения и события в развитии инклюзивного киберспорта",
+            "class": "mt-3 text-base md:text-lg text-[color:var(--subheading,rgba(47,58,70,0.70))]"
+          }
+        ]
+      },
+      {
+        "id": "timeline",
+        "class": "relative mt-10 md:mt-14 grid grid-cols-12 gap-y-8 md:gap-y-12",
+        "line": {
+          "class": "hidden lg:block pointer-events-none absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#A7E9E2] via-[#BFAFF8] to-[#F5D1C8]"
+        }
+      },
+      {
+        "id": "stats_row",
+        "class": "mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
+      }
+    ]
+  },
+  "content": {
+    "type": "roadmap",
+    "items": [
+      {
+        "id": "2023-07-12-duathlon-rus-africa",
+        "side": "left",
+        "accent": "aqua",
+        "date_display": { "label": "12 июля 2023" },
+        "title": "Международный инклюзивный турнир‑дуатлон",
+        "description": "По интерактивному и классическому футболу Россия–Африканские страны",
+        "meta": [
+          { "icon": "lucide:map-pin", "text": "Парк Победы, Москва" }
+        ]
+      },
+      {
+        "id": "2023-07-30-world-of-warships",
+        "side": "right",
+        "accent": "purple",
+        "date_display": { "label": "30 июля 2023" },
+        "title": "Турнир «Мир кораблей»",
+        "description": "Международный инклюзивный турнир",
+        "meta": [
+          { "icon": "lucide:building-2", "text": "СПбГУ" }
+        ]
+      },
+      {
+        "id": "2024-04-13-drones-vologda",
+        "side": "left",
+        "accent": "green",
+        "date_display": { "label": "13 апреля 2024" },
+        "title": "Турнир по БПЛА",
+        "description": "Международный инклюзивный турнир",
+        "meta": [
+          { "icon": "lucide:map-pin", "text": "Вологда" }
+        ]
+      },
+      {
+        "id": "2024-10-drones-cup",
+        "side": "right",
+        "accent": "purple",
+        "date_display": { "label": "Октябрь 2024" },
+        "title": "Международный турнир по БПЛА",
+        "description": "Соревнования беспилотных летательных аппаратов",
+        "meta": []
+      },
+      {
+        "id": "2025-01-moscow-grants",
+        "side": "left",
+        "accent": "aqua",
+        "date_display": { "label": "Январь 2025" },
+        "title": "Победители грантов Мэра Москвы",
+        "description": "Получение государственной поддержки для развития проекта",
+        "meta": []
+      },
+      {
+        "id": "2025-spring-sono-status",
+        "side": "right",
+        "accent": "purple",
+        "date_display": { "label": "Весна 2025" },
+        "title": "Статус социально ориентированной НКО",
+        "description": "Официальное признание социальной значимости проекта",
+        "meta": [
+          { "icon": "lucide:map-pin", "text": "Москва" }
+        ]
+      },
+      {
+        "id": "2025-06-drone-racing-masterclasses",
+        "side": "left",
+        "accent": "green",
+        "date_display": { "label": "Июнь 2025" },
+        "title": "Серия мастер‑классов по дрон‑рейсингу",
+        "description": "Образовательная программа для развития навыков управления БПЛА",
+        "meta": []
+      },
+      {
+        "id": "2025-xx-duma-conference",
+        "side": "right",
+        "accent": "peach",
+        "status_chip": { "text": "Планируется", "tone": "info" },
+        "date_display": { "label": "" },
+        "title": "Конференция в Государственной Думе РФ",
+        "description": "«Развитие фиджитал‑спорта как социокультурного феномена…»",
+        "meta": [
+          { "icon": "lucide:building", "text": "Государственная Дума РФ" }
+        ]
+      }
+    ],
+    "timeline_component": {
+      "left_class": "col-span-12 lg:col-span-5 lg:col-start-1",
+      "right_class": "col-span-12 lg:col-span-5 lg:col-start-8",
+      "marker_class": "hidden lg:block absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full ring-4 ring-white",
+      "card_class": "relative bg-[color:var(--card-bg,#FFFFFF)] border border-[color:var(--card-border,rgba(99,123,139,0.20))] rounded-2xl p-5 md:p-6 shadow-[0_16px_32px_-18px_var(--tw-shadow-color)]",
+      "style": { "--tw-shadow-color": "rgba(15,45,52,0.08)" },
+      "parts": {
+        "date_badge": "inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[13px] font-medium",
+        "title": "mt-3 text-lg md:text-xl font-semibold text-[color:var(--heading,#2F3A46)]",
+        "desc": "mt-1.5 text-[15px] leading-6 text-[color:var(--muted,#6B7785)]",
+        "meta": "mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[15px] text-[color:var(--muted,#6B7785)]",
+        "status_chip": "ml-2 inline-flex items-center px-2.5 py-1 rounded-full text-xs bg-white/70 border"
+      },
+      "accent_map": {
+        "aqua":   { "date_badge": "border-[color:var(--accent-aqua,#7BCDC5)] text-[color:var(--accent-aqua,#7BCDC5)]", "marker": "bg-[color:var(--accent-aqua,#7BCDC5)]" },
+        "purple": { "date_badge": "border-[color:var(--accent-purple,#B597F6)] text-[color:var(--accent-purple,#B597F6)]", "marker": "bg-[color:var(--accent-purple,#B597F6)]" },
+        "green":  { "date_badge": "border-[color:var(--accent-green,#9BE5C7)] text-[color:var(--accent-green,#9BE5C7)]", "marker": "bg-[color:var(--accent-green,#9BE5C7)]" },
+        "peach":  { "date_badge": "border-[color:var(--accent-peach,#F6C9C4)] text-[color:var(--accent-peach,#F6C9C4)]", "marker": "bg-[color:var(--accent-peach,#F6C9C4)]" }
+      }
+    },
+    "summary_stats": [
+      { "value": "8",     "label": "ключевых событий" },
+      { "value": "3",     "label": "года развития" },
+      { "value": "5+",    "label": "городов" },
+      { "value": "1000+", "label": "участников" }
+    ],
+    "bindings": {
+      "project_manifest": "ano-unikalnyy-mir.manifest.json",
+      "data_source": {
+        "kind": "file_optional",
+        "path": "/data/roadmap.json",
+        "schema": "roadmap[]: {id, side, accent, date_display{label}, title, description, meta[], status_chip?}"
+      }
+    }
+  },
+  "behavior": {
+    "animations": [
+      "card:hover → translate-y-[2px]",
+      "on-scroll(reveal) → fade-in & slight-slide(left|right)"
+    ],
+    "mobile": {
+      "stack_strategy": "single_column_with_left_border",
+      "left_border_class": "relative before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-[rgba(123,205,197,0.35)] pl-4"
+    }
+  },
+  "accessibility": {
+    "landmark": "section",
+    "aria_labels": {
+      "section": "Дорожная карта проекта",
+      "timeline": "Хронология ключевых событий",
+      "stat_list": "Итоговые показатели RoadMap"
+    },
+    "roles": {
+      "timeline_container": "list",
+      "timeline_item": "listitem"
+    },
+    "keyboard": {
+      "focus_ring": "ring-2 ring-offset-2 ring-[rgba(123,205,197,0.6)] rounded-2xl"
+    }
+  },
+  "responsiveness": [
+    { "bp": "sm", "rules": ["timeline:grid-cols-1", "stats_row:grid-cols-2", "card:p-5"] },
+    { "bp": "lg", "rules": ["timeline:grid-cols-12", "stats_row:grid-cols-4"] }
+  ],
+  "component_mapping": {
+    "timeline": { "library": "custom", "component": "Timeline" },
+    "card": { "library": "shadcn", "component": "Card" },
+    "badge": { "library": "shadcn", "component": "Badge" }
+  },
+  "quality_gates": [
+    { "type": "screenshot_diff", "reference_asset": "roadmap_png_ref", "threshold": 0.98 },
+    { "type": "a11y", "level": "AA" }
+  ],
+  "mcp_preferences": {
+    "use": ["context7","sequential-thinking"],
+    "context7": { "libraries": ["/tailwindcss/tailwindcss","/radix-ui/react"] },
+    "sequential-thinking": { "plan": ["сетку 12 колонок", "центральная линия", "альтернирование карточек", "адаптив mobile", "нижние KPI", "a11y", "пиксель‑сверка"] }
+  },
+  "output": {
+    "format": "file_tree",
+    "files": ["components/roadmap-section.tsx","data/roadmap.json","styles/globals.css"]
+  }
+}

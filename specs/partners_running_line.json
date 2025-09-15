@@ -1,0 +1,142 @@
+{
+  "schema": "ui_layout_spec",
+  "version": "1",
+  "meta": {
+    "project": "ano-unikalnyy-mir",
+    "block_ref": "partners_carousel_marquee",
+    "target_stack": "react_tailwind",
+    "breakpoints": ["sm","md","lg","xl"],
+    "tokens": {
+      "container": "max-w-7xl mx-auto px-4 md:px-6",
+      "colors": {
+        "bg_grad_from": "#F1F6FB",
+        "bg_grad_to": "#F4EFF8",
+        "heading": "#1F2A37",
+        "muted": "rgba(31,42,55,0.68)",
+        "card_bg": "#FFFFFF",
+        "card_border": "rgba(99,123,139,0.16)",
+        "ring_featured": "rgba(123,205,197,0.65)",
+        "glow_featured": "rgba(123,205,197,0.35)"
+      },
+      "radius": { "xl": "1.25rem", "2xl": "1.5rem" }
+    }
+  },
+  "assets": [
+    { "id": "partners_png_ref", "type": "image/png", "source_name": "Section-5.png", "role": "visual_reference" }
+  ],
+  "layout": {
+    "class": "relative overflow-hidden py-14 md:py-20 bg-gradient-to-r from-[color:var(--bg-grad-from,#F1F6FB)] to-[color:var(--bg-grad-to,#F4EFF8)]",
+    "children": [
+      { "id": "container", "class": "w-full {{meta.tokens.container}}" },
+      {
+        "id": "header",
+        "class": "text-center max-w-3xl mx-auto",
+        "children": [
+          { "type": "heading", "as": "h2", "text": "Партнёры", "class": "text-3xl md:text-4xl font-bold tracking-tight text-[color:var(--heading,#1F2A37)]" },
+          { "type": "sub", "as": "p", "text": "Вместе мы создаём инклюзивное киберспортивное сообщество", "class": "mt-3 text-base md:text-lg text-[color:var(--muted,rgba(31,42,55,0.68))]" }
+        ]
+      },
+      {
+        "id": "carousel_shell",
+        "class": "mt-10 md:mt-12 relative",
+        "children": [
+          { "type": "fade_left", "class": "pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[rgba(241,246,251,1)] to-transparent" },
+          { "type": "fade_right", "class": "pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[rgba(244,239,248,1)] to-transparent" },
+          {
+            "type": "marquee_track",
+            "id": "track",
+            "class": "relative overflow-x-hidden -mx-4 px-4",
+            "children": [
+              { "type": "marquee_lane", "class": "flex items-center gap-5 md:gap-6 will-change-transform", "dataset": { "lane": "1" } },
+              { "type": "marquee_lane_clone", "class": "flex items-center gap-5 md:gap-6 will-change-transform opacity-100", "dataset": { "lane": "1-clone" } }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "content": {
+    "type": "partners_carousel",
+    "card_component": {
+      "class": "group bg-[color:var(--card-bg,#FFFFFF)] rounded-2xl border border-[color:var(--card_border,rgba(99,123,139,0.16))] shadow-[0_16px_32px_-18px_rgba(15,45,52,0.10)] px-6 py-5 md:px-7 md:py-6 flex items-center gap-4",
+      "parts": {
+        "logo_wrap": "shrink-0 relative inline-flex items-center justify-center rounded-2xl bg-gradient-to-b from-[rgba(123,205,197,0.10)] to-[rgba(123,205,197,0.06)]",
+        "logo_img": "object-contain w-auto h-10 md:h-12",
+        "text": "text-center md:text-left",
+        "title": "text-sm md:text-[15px] font-medium text-[color:var(--heading,#1F2A37)]",
+        "caption": "mt-1 text-[12px] text-[color:var(--muted,rgba(31,42,55,0.68))]"
+      },
+      "featured_mod": {
+        "wrap": "ring-2 ring-[color:var(--ring_featured,rgba(123,205,197,0.65))] shadow-[0_0_0_8px_var(--glow_featured,rgba(123,205,197,0.35))] scale-[1.03]",
+        "logo": "h-12 md:h-[56px]"
+      },
+      "sizes": {
+        "card_w": { "sm": 260, "md": 300, "lg": 340 },
+        "logo_pad": { "sm": 14, "md": 16 }
+      }
+    },
+    "highlight": {
+      "by_flag": "featured",
+      "by_ids": ["va-pc", "va-studio", "fks-rossii", "pravitelstvo-moskvy", "federatsiya-gonok-dronov-rossii"]
+    },
+    "ordering": {
+      "group_order": ["госструктуры","ФКС России","Федерация гонок дронов России","СМИ","партнёры","НКО"],
+      "featured_first": true,
+      "then_by": ["priority:desc", "display_name:asc"]
+    },
+    "filters": {
+      "exclude_by_meta": ["GEOSCAN", "Street Media Group"],
+      "deny_regex": "(?i)geoscan|street\\s*media"
+    },
+    "bindings": {
+      "project_manifest": "ano-unikalnyy-mir.manifest.json",
+      "data_source": {
+        "kind": "file",
+        "path": "/data/partners.json",
+        "schema": "meta{ordering,exclude},items[]:{id,display_name,category,logo,href?,featured?,priority?,approved?}"
+      }
+    }
+  },
+  "behavior": {
+    "marquee": {
+      "mode": "infinite",
+      "speed_px_s": { "sm": 36, "md": 48, "lg": 64 },
+      "gap_px": { "sm": 20, "md": 24 },
+      "pause_on_hover": true,
+      "reverse_on_rtl": true,
+      "duplicate_lanes": 1,
+      "respect_reduced_motion": true
+    },
+    "interactions": {
+      "click_logo_opens": "href || null",
+      "open_in_new_tab_if_external": true
+    }
+  },
+  "accessibility": {
+    "landmark": "region",
+    "aria_labels": {
+      "section": "Карусель логотипов партнёров",
+      "lane": "Лента логотипов, прокручивается автоматически"
+    },
+    "roles": {
+      "lane": "list",
+      "card": "listitem"
+    }
+  },
+  "responsiveness": [
+    { "bp": "sm", "rules": ["logo_img:h-10", "card:!w-[260px]"] },
+    { "bp": "md", "rules": ["logo_img:h-12", "card:!w-[300px]"] },
+    { "bp": "lg", "rules": ["logo_img:h-[56px]", "card:!w-[340px]"] }
+  ],
+  "component_mapping": {
+    "scroll_area": { "library": "shadcn", "component": "ScrollArea" }
+  },
+  "quality_gates": [
+    { "type": "a11y", "level": "AA" },
+    { "type": "visual_review", "notes": "Проверить glow и ring у featured; карусель плавная, без рывков." }
+  ],
+  "output": {
+    "format": "file_tree",
+    "files": ["components/partners-carousel.tsx"]
+  }
+}
