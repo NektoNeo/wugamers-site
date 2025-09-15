@@ -16,7 +16,7 @@ export default function Home() {
 
       {/* Hero Section */}
       <main
-        id="main"
+        id="hero"
         className="relative overflow-hidden bg-gradient-to-r from-[#E4F5F9] to-[#EBEEF7] py-10 md:py-16 lg:py-24"
         role="main"
       >
@@ -85,12 +85,15 @@ export default function Home() {
             {/* Media Section */}
             <div className="lg:col-span-6 flex justify-center lg:justify-end order-first lg:order-last">
               <div className="relative w-full max-w-md lg:max-w-lg">
-                {/* Placeholder for 3D character image */}
-                <div className="aspect-square bg-gradient-to-br from-[#E4F5F9] to-[#EBEEF7] rounded-2xl border-2 border-dashed border-[#43B7B4]/30 flex items-center justify-center">
-                  <div className="text-center text-[#43B7B4]/60">
-                    <div className="text-4xl mb-2">🎮</div>
-                    <div className="text-sm font-medium">3D Character Placeholder</div>
-                  </div>
+                {/* Robot Image with Animation */}
+                <div className="relative animate-float">
+                  <img
+                    src="/Robot.png"
+                    alt="WU Gamers Robot"
+                    className="w-full h-auto object-contain drop-shadow-2xl"
+                  />
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#7BCDC5]/20 to-transparent blur-3xl -z-10"></div>
                 </div>
               </div>
             </div>
@@ -99,37 +102,53 @@ export default function Home() {
       </main>
 
       {/* Events Section */}
-      <EventsSection />
+      <div id="events">
+        <EventsSection />
+      </div>
 
       {/* About Section */}
       <div id="about">
+        <div id="about">
         <AboutSection />
+      </div>
       </div>
 
       {/* Roadmap Section */}
-      <RoadmapSection />
+      <div id="roadmap">
+        <RoadmapSection />
+      </div>
 
       {/* Team Section */}
       <div id="team">
+        <div id="team">
         <TeamCarousel />
+      </div>
       </div>
 
       {/* Partners Section */}
       <div id="partners">
+        <div id="partners">
         <PartnersSection />
+      </div>
       </div>
 
       {/* Gratitude Section */}
-      <GratitudeGallery />
+      <div id="gratitude">
+        <GratitudeGallery />
+      </div>
 
       {/* Donate Section */}
       <div id="donate">
+        <div id="donate">
         <DonateSection />
+      </div>
       </div>
 
       {/* Contacts Section */}
       <div id="contacts">
+        <div id="contacts">
         <ContactsSection />
+      </div>
       </div>
 
       {/* Footer */}

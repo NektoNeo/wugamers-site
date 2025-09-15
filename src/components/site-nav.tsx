@@ -16,33 +16,55 @@ import {
 } from "@/components/ui/sheet"
 
 const menuItems = [
-  { text: "Главная", href: "/" },
-  { text: "О нас", href: "/about" },
-  { text: "Мероприятия", href: "/events" },
-  { text: "Команда", href: "/team" },
-  { text: "Партнёры", href: "/partners" },
-  { text: "Контакты", href: "/contacts" },
+  { text: "Главная", href: "#hero" },
+  { text: "О нас", href: "#about" },
+  { text: "Мероприятия", href: "#events" },
+  { text: "Команда", href: "#team" },
+  { text: "Партнёры", href: "#partners" },
+  { text: "Контакты", href: "#contacts" },
 ]
 
 export function SiteNav() {
   const pathname = usePathname()
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
+  const [activeSection, setActiveSection] = React.useState("hero")
 
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 8)
+
+      // Update active section based on scroll position
+      const sections = ["hero", "about", "events", "team", "partners", "contacts"]
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === href
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    const targetId = href.replace("#", "")
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+      setIsOpen(false)
     }
-    return pathname.startsWith(href)
+  }
+
+  const isActive = (href: string) => {
+    const sectionId = href.replace("#", "")
+    return activeSection === sectionId
   }
 
   return (
@@ -66,7 +88,7 @@ export function SiteNav() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
-            src="/assets/brand/logo-mark.png"
+            src="/brand/logo-mark.png"
             alt="АНО «Уникальный мир»"
             width={48}
             height={32}
@@ -79,17 +101,18 @@ export function SiteNav() {
         <ul className="hidden md:flex items-center gap-1">
           {menuItems.map((item) => (
             <li key={item.href}>
-              <Link
+              <a
                 href={item.href}
+                onClick={(e) => handleClick(e, item.href)}
                 className={cn(
-                  "text-[15px] md:text-[16px] transition-colors px-3 py-2 rounded-md",
+                  "text-[15px] md:text-[16px] transition-colors px-3 py-2 rounded-md cursor-pointer",
                   isActive(item.href)
                     ? "text-[#2F3A46]"
                     : "text-[#616A78] hover:text-[#2F3A46]"
                 )}
               >
                 {item.text}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -129,19 +152,19 @@ export function SiteNav() {
               </SheetHeader>
               <nav className="p-4 flex flex-col gap-2">
                 {menuItems.map((item) => (
-                  <Link
+                  <a
                     key={item.href}
                     href={item.href}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleClick(e, item.href)}
                     className={cn(
-                      "text-lg py-2 px-2 rounded-md transition-colors",
+                      "text-lg py-2 px-2 rounded-md transition-colors cursor-pointer",
                       isActive(item.href)
                         ? "text-[#2F3A46] bg-gray-50"
                         : "text-[#616A78] hover:text-[#2F3A46] hover:bg-gray-50"
                     )}
                   >
                     {item.text}
-                  </Link>
+                  </a>
                 ))}
               </nav>
             </SheetContent>
