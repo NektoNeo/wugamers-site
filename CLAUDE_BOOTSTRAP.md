@@ -40,13 +40,13 @@ V. Контент и ссылки (зашей как константы в /lib/
 - Контакты (из ТЗ): email unikmir@mail.ru, тел. +7 (977) 104-00-00 (Нечаев Н. И.)
 
 VI. Интеграция MCP (Context7 + Sequential Thinking)
+- Если MCP-клиент предложит войти в Context7, пройди авторизацию в браузере.
 - Создай в корне mcp.json со следующим содержимым и активируй в текущем проекте:
 {
   "mcpServers": {
     "context7": {
       "transport": "http",
-      "url": "https://mcp.context7.com/mcp",
-      "headers": { "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}" }
+      "url": "https://mcp.context7.com/mcp"
     },
     "sequential-thinking": {
       "command": "npx",
